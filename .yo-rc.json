@@ -1,0 +1,17 @@
+{
+  "generator-ngx-rocket": {
+    "version": "2.2.0",
+    "props": {
+      "appName": "tercios-builder",
+      "target": [
+        "web"
+      ],
+      "pwa": false,
+      "ui": "bootstrap",
+      "auth": false,
+      "projectName": "tercios-builder",
+      "mobile": [],
+      "webview": []
+    }
+  }
+}
