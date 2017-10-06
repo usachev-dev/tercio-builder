@@ -28,7 +28,6 @@ export class HeaderComponent implements OnInit {
   }
 
   get languages(): string[] {
-    console.log(this.i18nService.supportedLanguages);
     return this.i18nService.supportedLanguages;
   }
 

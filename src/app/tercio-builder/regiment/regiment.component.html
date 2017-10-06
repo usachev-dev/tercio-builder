@@ -1,3 +1,16 @@
-<p>
-  regiment works!
-</p>
+  <select #type_select
+          name="type"
+          class="form-control"
+          id=""
+          (change)="setRegimentType(type_select.value)"
+  >
+    <option *ngFor="let type of regiment_types"
+            value="{{type}}"
+            translate
+    >
+      {{type}}
+    </option>
+  </select>
+<ul>
+  <app-unit *ngFor="let unit of regiment.units" [type]="regiment.type"></app-unit>
+</ul>

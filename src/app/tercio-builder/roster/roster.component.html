@@ -1,3 +1,4 @@
-<p>
-  roster works!
-</p>
+<app-commander #cnc></app-commander>
+<app-regiment *ngFor='let regiment of regiments'
+  ></app-regiment>
+<button (click)="addRegiment()">add regiment</button>

@@ -1,0 +1,25 @@
+:host {
+  font-family: 'Playfair Display', serif;
+}
+h1 {
+  font-size: 40px;
+}
+.faction-picker{
+  display: flex;
+  max-width: 100%;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.faction {
+  display: block;
+  cursor: pointer;
+  padding: 40px 25px;
+  text-align: center;
+  max-width: 320px;
+  img {
+    width: 250px;
+  }
+}
+.title {
+  font-size: 25px;
+}

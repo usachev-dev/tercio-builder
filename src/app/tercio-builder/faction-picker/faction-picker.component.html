@@ -1,0 +1,12 @@
+<h1 translate>Please select faction</h1>
+<div class="faction-picker">
+  <div class="faction"
+       *ngFor="let faction of factions"
+        routerLink="/faction/{{faction.title}}"
+  >
+    <div class="flag">
+      <img src="{{faction.flag}}" alt="">
+    </div>
+    <div class="title" translate>{{faction.title}}</div>
+  </div>
+</div>

@@ -12,6 +12,8 @@ import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 import { HomeModule } from './home/home.module';
 import { AboutModule } from './about/about.module';
+import { TercioBuilderModule } from './tercio-builder/tercio-builder.module';
+
 @NgModule({
   imports: [
     BrowserModule,
@@ -23,6 +25,7 @@ import { AboutModule } from './about/about.module';
     SharedModule,
     HomeModule,
     AboutModule,
+    TercioBuilderModule,
     AppRoutingModule
   ],
   declarations: [AppComponent],

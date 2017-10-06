@@ -12,3 +12,16 @@
 
 // Theme customization
 @import "theme/theme";
+
+@import url('https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i&subset=cyrillic');
+
+// Breakpoints
+$xs: (max-width: 575px);
+$sm: (min-width: 576px) and (max-width: 767px);
+$md: (min-width: 768px) and (max-width: 991px);
+$lg: (min-width: 992px) and (max-width: 1199px);
+$xl: (min-width: 1200px);
+
+$sm-plus: (min-width: 576px);
+$md-plus: (min-width: 768px);
+$lg-plus: (min-width: 992px);

@@ -3,11 +3,13 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { Route } from '../core/route.service';
 import { extract } from '../core/i18n.service';
-import { TercioBuilderComponent } from './tercio-builder/tercio-builder.component';
+import {FactionPickerComponent} from "./faction-picker/faction-picker.component";
+import {RosterComponent} from "./roster/roster.component";
 
 const routes: Routes = Route.withShell([
-  //{ path: '', redirectTo: '/', pathMatch: 'full' },
-  { path: 'builder', component: TercioBuilderComponent, data: { title: extract('Home') } }
+  { path: 'factions', component: FactionPickerComponent },
+  { path: 'faction/:title', component: RosterComponent }
+  //{ path: '', redirectTo: '/builder', pathMatch: 'full' }, ///////????? TODO
 ]);
 
 @NgModule({

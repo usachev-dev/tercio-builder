@@ -6,7 +6,7 @@ import { extract } from '../core/i18n.service';
 import { HomeComponent } from './home.component';
 
 const routes: Routes = Route.withShell([
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: '', redirectTo: '/factions', pathMatch: 'full' }, //////???????TODO
   { path: 'home', component: HomeComponent, data: { title: extract('Home') } }
 ]);
 

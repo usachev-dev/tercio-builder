@@ -8,7 +8,7 @@ import { RosterComponent } from './roster/roster.component';
 import { CommanderComponent } from './commander/commander.component';
 import { RegimentComponent } from './regiment/regiment.component';
 import { UnitComponent } from './unit/unit.component';
-import { TercioBuilderComponent } from './tercio-builder/tercio-builder.component';
+import { FactionPickerComponent } from './faction-picker/faction-picker.component';
 
 @NgModule({
   imports: [
@@ -16,6 +16,6 @@ import { TercioBuilderComponent } from './tercio-builder/tercio-builder.componen
     TercioBuilderRoutingModule,
     TranslateModule
   ],
-  declarations: [RosterComponent, CommanderComponent, RegimentComponent, UnitComponent, TercioBuilderComponent]
+  declarations: [RosterComponent, CommanderComponent, RegimentComponent, UnitComponent, FactionPickerComponent]
 })
 export class TercioBuilderModule { }

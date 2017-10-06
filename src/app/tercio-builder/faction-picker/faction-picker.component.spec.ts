@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TercioBuilderComponent } from './tercio-builder.component';
+import { FactionPickerComponent } from './faction-picker.component';
 
-describe('TercioBuilderComponent', () => {
-  let component: TercioBuilderComponent;
-  let fixture: ComponentFixture<TercioBuilderComponent>;
+describe('FactionPickerComponent', () => {
+  let component: FactionPickerComponent;
+  let fixture: ComponentFixture<FactionPickerComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TercioBuilderComponent ]
+      declarations: [ FactionPickerComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TercioBuilderComponent);
+    fixture = TestBed.createComponent(FactionPickerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
