@@ -1,16 +1,13 @@
-  <select #type_select
-          name="type"
-          class="form-control"
-          id=""
-          (change)="setRegimentType(type_select.value)"
-  >
-    <option *ngFor="let type of regiment_types"
-            value="{{type}}"
-            translate
-    >
-      {{type}}
-    </option>
-  </select>
-<ul>
-  <app-unit *ngFor="let unit of regiment.units" [type]="regiment.type"></app-unit>
-</ul>
+<div [class]="'regiment_container '+ regiment_data.color">
+  <h2>{{regiment_data.title}}</h2>
+  <button class="delete" (click)="deleteRegiment()">Delete</button>
+  <app-commander [rank]="regiment_data.min_commander_rank"></app-commander>
+  <app-unit *ngFor="let unit of units" [unit_type]="unit"></app-unit>
+  <div class="button-plus-wrapper"
+  *ngIf="units_available || companies_available">
+    <button class="add-unit plus-circle"></button>
+  </div>
+
+</div>
+
+

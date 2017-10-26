@@ -1,52 +1,56 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, Input, EventEmitter, Output} from '@angular/core';
 import { UnitComponent } from '../unit/unit.component';
-import { regimentData } from './data';
+import { TercioDataService } from "../tercio-data.service";
 import * as _ from 'lodash';
 
 @Component({
   selector: 'app-regiment',
   templateUrl: './regiment.component.html',
-  styleUrls: ['./regiment.component.scss']
+  styleUrls: ['./regiment.component.scss'],
+  inputs: ['regiment_data','regiment_index']
 })
 export class RegimentComponent implements OnInit {
-  regiment_types: string[] = _.keys(regimentData);
-  regiment: Regiment = new Regiment(this.regiment_types[0]);
+  regiment_data: any;
+  regiment_index: number;
+  units: string[];
+  companies: string[];
+  units_available: string[];
+  companies_available: string[];
 
-  setRegimentType(type: string): void {
-    this.regiment = new Regiment(type);
-  }
-  delete_regiment(){
+  constructor(private dataService: TercioDataService) { }
 
-  }
-  constructor() { }
+  @Output()
+  delete_regiment: EventEmitter<number> = new EventEmitter();
 
   ngOnInit() {
+    console.log(this.regiment_data);
   }
+  deleteRegiment(){
+    this.delete_regiment.emit(this.regiment_index)
+  }
+  addUnit(type: string){
+    this.units.push(type);
+  }
+  addCompany(type: string){
+    this.companies.push(type);
+  }
+  updateAvailableUnits(){
 
-}
+  }
+  updateAvailableCompanies(){
 
-class Regiment {
-  min_units: number;
-  max_units: number;
-  min_companies: number;
-  max_companies: number;
-  min_commander_rank: number;
-  max_commander_rank: number;
-  type: string;
-  units: UnitComponent[];
-  constructor(type: string) {
-    let data =regimentData[type];
-    this.min_units = data.min_units;
-    this.max_units = data.max_units;
-    this.min_companies = data.min_companies;
-    this.max_companies = data.max_companies;
-    this.min_commander_rank = data.min_commander_rank;
-    this.max_commander_rank = data.max_commander_rank;
-    this.type = data.type;
-    this.units = [];
-    for(let i=0; i<this.min_units; i++){
-      this.units.push(new UnitComponent())
+  }
+  initRegiment(){
+    if (this.regiment_data.min_units  && !_.isUndefined(this.regiment_data.units_available[0])) {
+      for (let i = 0; i < this.regiment_data.min_units; i++) {
+        this.addUnit(this.regiment_data.units_available[0]);
+      }
     }
-    console.log(this.units);
+    if (this.regiment_data.min_companies  && !_.isUndefined(this.regiment_data.companies_available[0])) {
+      for (let i = 0; i < this.regiment_data.min_companies; i++) {
+        this.addCompany(this.regiment_data.companies_available[0]);
+      }
+    }
   }
 }
+

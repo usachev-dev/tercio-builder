@@ -1,0 +1,103 @@
+$green-bg: rgba(21, 119, 9, 0.06);
+$green-border: rgba(16, 120, 11, 0.3);
+$green-border-hover: rgba(16, 120, 11, 0.5);
+
+$blue-bg: rgba(30, 126, 170, 0.06);
+$blue-border: rgba(8, 73, 119, 0.3);
+$blue-border-hover:rgba(8, 73, 119, 0.5);
+
+$red-bg: rgba(119, 36, 8, 0.06);
+$red-border: rgba(119, 36, 23, 0.3);
+$red-border-hover:rgba(119, 36, 23, 0.5);
+
+$yellow-bg: rgba(112, 119, 8, 0.06);
+$yellow-border: rgba(119, 110, 8, 0.3);
+$yellow-border-hover:rgba(119, 110, 8, 0.5);
+
+.regiment_container {
+  border-style: solid;
+  border-width: 1px;
+  padding: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  &.green {
+    background: $green-bg;
+    border-color: $green-border;
+    .plus-circle {
+      border-color: $green-border;
+      &:hover {
+        border-color: $green-border-hover;
+      }
+      &:before, &:after {
+        background-color: $green-border;
+      }
+      &:hover:before, &:hover:after {
+        background-color: $green-border-hover;
+      }
+    }
+  }
+  &.blue {
+    background: $blue-bg;
+    border-color: $blue-border;
+    .plus-circle {
+      border-color: $blue-border;
+      &:hover {
+        border-color: $blue-border-hover;
+      }
+      &:before, &:after {
+        background-color: $blue-border;
+      }
+      &:hover:before, &:hover:after {
+        background-color: $blue-border-hover;
+      }
+    }
+  }
+  &.red {
+    background: $red-bg;
+    border-color: $red-border;
+    .plus-circle {
+      border-color: $red-border;
+      &:hover {
+        border-color: $red-border-hover;
+      }
+      &:before, &:after {
+        background-color: $red-border;
+      }
+      &:hover:before, &:hover:after {
+        background-color: $red-border-hover;
+      }
+    }
+  }
+  &.yellow {
+    background: $yellow-bg;
+    border-color: $yellow-border;
+    .plus-circle {
+      border-color: $yellow-border;
+      &:hover {
+        border-color: $yellow-border-hover;
+      }
+      &:before, &:after {
+        background-color: $yellow-border;
+      }
+      &:hover:before, &:hover:after {
+        background-color: $yellow-border-hover;
+      }
+    }
+  }
+}
+
+.plus-circle {
+  width: 30px;
+  height: 30px;
+  background-color: transparent;
+  &:before, &:after {
+    background-color: $yellow-border;
+    height: 15px;
+    left: 14px;
+    top: 7.5px;
+  }
+}
+
+.button-plus-wrapper {
+  position: relative;
+}

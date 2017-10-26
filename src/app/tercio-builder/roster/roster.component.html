@@ -1,4 +1,34 @@
-<app-commander #cnc></app-commander>
-<app-regiment *ngFor='let regiment of regiments'
-  ></app-regiment>
-<button (click)="addRegiment()">add regiment</button>
+<div class="roster-container" (click)="addingRegiment = false">
+  <div class="limits-block">
+    <div class="limit" *ngFor="let regiment_type of armyTypeData.regiments">
+      <span translate>{{getRegimentById(regiment_type.id).title}}:</span>
+      {{getRegimentNumber(regiment_type.id)}}/{{regiment_type.max}}
+    </div>
+  </div>
+  <app-commander #cnc></app-commander>
+  <div class="" *ngFor='let regiment of regiments; let index = index'>
+    <app-regiment
+      [regiment_data] ="regiment"
+      [regiment_index]="index"
+      (delete_regiment)="deleteRegiment(index)"
+    ></app-regiment>
+  </div>
+
+
+  <div class="add-regiment-block" *ngIf="availableRegiments.length>0">
+    <div class="button-plus-wrapper">
+      <button class="plus-circle"
+              (click)="plusButton($event)"
+              *ngIf="!addingRegiment">
+      </button>
+    </div>
+    <div class="regiment-choice-block" *ngIf="addingRegiment">
+      <div class="regiment-choice"
+        *ngFor="let regiment_type of availableRegiments"
+           (click)="addRegiment(regiment_type.id)"
+           translate>
+        {{regiment_type.title}}
+      </div>
+    </div>
+  </div>
+</div>

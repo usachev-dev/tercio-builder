@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { factionData } from "./data";
+import { TercioDataService } from "../tercio-data.service";
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-faction-picker',
@@ -7,15 +8,17 @@ import { factionData } from "./data";
   styleUrls: ['./faction-picker.component.scss']
 })
 export class FactionPickerComponent implements OnInit {
-  factions = factionData;
-  @Output() factionChosen: EventEmitter<any> = new EventEmitter();
-
-  choseFaction(options:object){
-    this.factionChosen.emit(options);
-  }
-  constructor() { }
+  factions: any;
+  army_types: any;
+  chosen_faction: number;
+  constructor(private dataService: TercioDataService) { }
 
   ngOnInit() {
+    this.factions = this.dataService.getFactions();
+    this.army_types = this.dataService.getArmyTypes();
   }
 
+  getTypeById(id: string){
+    return this.dataService.getArmyTypeById(id);
+  }
 }

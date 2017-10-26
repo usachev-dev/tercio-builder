@@ -1,12 +1,17 @@
 <h1 translate>Please select faction</h1>
 <div class="faction-picker">
   <div class="faction"
-       *ngFor="let faction of factions"
-        routerLink="/faction/{{faction.title}}"
+       *ngFor="let faction of factions; let i = index"
+       (click)="chosen_faction = i"
   >
     <div class="flag">
       <img src="{{faction.flag}}" alt="">
     </div>
     <div class="title" translate>{{faction.title}}</div>
+    <div class="army-type-select" *ngIf="chosen_faction == i">
+      <div class="army-type" *ngFor="let type of faction.army_types" routerLink="/{{faction.id}}/{{type}}" translate>
+        {{ getTypeById(type).title }}
+      </div>
+    </div>
   </div>
 </div>

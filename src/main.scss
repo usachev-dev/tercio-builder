@@ -5,7 +5,6 @@
 
 // Theme variables, must be included before the libraries to allow overriding defaults
 @import "theme/theme-variables";
-
 // 3rd party libraries
 @import "~bootstrap/scss/bootstrap";
 @import "~font-awesome/scss/font-awesome.scss";
@@ -15,13 +14,47 @@
 
 @import url('https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i&subset=cyrillic');
 
-// Breakpoints
-$xs: (max-width: 575px);
-$sm: (min-width: 576px) and (max-width: 767px);
+
+//colors
+
+
+
+//breakpoints
+$xs: (max-width: 559px);
+$sm: (min-width: 560px) and (max-width: 767px);
 $md: (min-width: 768px) and (max-width: 991px);
 $lg: (min-width: 992px) and (max-width: 1199px);
 $xl: (min-width: 1200px);
 
-$sm-plus: (min-width: 576px);
-$md-plus: (min-width: 768px);
-$lg-plus: (min-width: 992px);
+$smplus: (min-width: 560px);
+$mdplus: (min-width: 768px);
+$lgplus: (min-width: 992px);
+
+* {
+  font-family: 'Playfair Display', serif;
+}
+
+.plus-circle {
+  background-color: white;
+  cursor: pointer;
+  border-radius: 100%;
+  border-width: 1px;
+  border-style: solid;
+  width: 50px;
+  height: 50px;
+  transition: border-color 0.3s;
+  &:before, &:after {
+    background-color: black;
+    position: absolute;
+    left: 23px;
+    top: 12.5px;
+    content: ' ';
+    height: 25px;
+    width: 2px;
+    transition: background-color 0.3s;
+  }
+  &:before {
+    transform: rotate(90deg);
+  }
+
+}

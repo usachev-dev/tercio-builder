@@ -10,12 +10,15 @@ import { RegimentComponent } from './regiment/regiment.component';
 import { UnitComponent } from './unit/unit.component';
 import { FactionPickerComponent } from './faction-picker/faction-picker.component';
 
+import { TercioDataService } from "./tercio-data.service";
+
 @NgModule({
   imports: [
     CommonModule,
     TercioBuilderRoutingModule,
     TranslateModule
   ],
-  declarations: [RosterComponent, CommanderComponent, RegimentComponent, UnitComponent, FactionPickerComponent]
+  declarations: [RosterComponent, CommanderComponent, RegimentComponent, UnitComponent, FactionPickerComponent],
+  providers:[TercioDataService]
 })
 export class TercioBuilderModule { }

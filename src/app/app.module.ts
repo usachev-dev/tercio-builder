@@ -10,7 +10,6 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
-import { HomeModule } from './home/home.module';
 import { AboutModule } from './about/about.module';
 import { TercioBuilderModule } from './tercio-builder/tercio-builder.module';
 
@@ -22,10 +21,10 @@ import { TercioBuilderModule } from './tercio-builder/tercio-builder.module';
     TranslateModule.forRoot(),
     NgbModule.forRoot(),
     CoreModule,
-    SharedModule,
-    HomeModule,
-    AboutModule,
     TercioBuilderModule,
+    SharedModule,
+    AboutModule,
+
     AppRoutingModule
   ],
   declarations: [AppComponent],

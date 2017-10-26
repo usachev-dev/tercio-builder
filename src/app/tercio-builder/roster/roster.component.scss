@@ -1,0 +1,100 @@
+@import "../../../main";
+
+$regiment-bg-color: #fefdf4;
+$regiment-border-color:#ccc8ad;
+$regiment-border-hover: #7d8577;
+
+.roster-container{
+  padding: 10px;
+  margin: auto;
+  max-width: 1000px;
+  @media #{$smplus}{
+    padding: 20px;
+  }
+  @media #{$lgplus}{
+    padding: 30px;
+  }
+}
+
+.limits-block {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.limit {
+  display: inline;
+  font-weight: 600;
+  margin: 5px 30px 0 0;
+}
+
+
+
+.add-regiment-block {
+  position: relative;
+  width: 100%;
+  min-height: 100px;
+  border: 1px solid $regiment-border-color;
+  background-color: $regiment-bg-color;
+  display: block;
+}
+.regiment-choice-block {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  @media #{$smplus}{
+    flex-direction: row;
+  }
+}
+
+.button-plus-wrapper{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  //width: 50px;
+ // height: 50px;
+  margin-top: -25px;
+  margin-left: -25px;
+}
+
+.plus-circle {
+  background-color: $regiment-bg-color;
+  border-color: $regiment-border-color;
+  &:hover {
+    border-color: $regiment-border-hover;
+  }
+  &:before, &:after {
+    background-color: $regiment-border-color;
+  }
+  &:hover:before, &:hover:after {
+    background-color: $regiment-border-hover;
+  }
+}
+
+.regiment-choice {
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255,255,255,0.97);
+  cursor: pointer;
+  border-bottom: 1px solid $regiment-border-color;
+  flex: 1;
+  width: 100%;
+  &:hover {
+    background-color: white;
+  }
+  @media #{$smplus}{
+    border-right: 1px solid $regiment-border-color;
+    border-bottom: none;
+    width: auto;
+  }
+  &:last-child {
+    border-right: none;
+    border-botton: none;
+  }
+}
