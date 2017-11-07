@@ -12,7 +12,7 @@ export const factionData = [
     },
     unit_modifiers: {
       tercio:{
-        options:['viejo','swordsmen']
+        options:['Viejo','+Swordsmen']
       }
     }
   },
@@ -22,8 +22,7 @@ export const factionData = [
     title: 'Kingdom of England',
     sort: 500,
     flag: 'assets/icons/flags/england.svg',
-    //army_types:['standart_army','mounted_army', 'companies_army'],
-    army_types: ['standart_army'],
+    army_types:['standart_army','mounted_army', 'companies_army'],
     regiment_modifiers: {
       foot_regiment: {
         units_available: ['reformed']
@@ -31,7 +30,10 @@ export const factionData = [
     },
     unit_modifiers: {
       shot_company: {
-        options: ['archers']
+        options: ['Archers']
+      },
+      reformed: {
+        options: ['+Greatswords']
       }
     }
   },
@@ -41,8 +43,7 @@ export const factionData = [
     title:'Swedish Empire',
     sort: 800,
     flag:'assets/icons/flags/sweden.svg',
-    //army_types:['standart_army','mounted_army', 'companies_army'],
-    army_types:['standart_army','mounted_army'],
+    army_types:['standart_army','mounted_army', 'companies_army'],
     regiment_modifiers: {
       foot_regiment: {
         units_available: ['modern'],
@@ -50,10 +51,145 @@ export const factionData = [
     },
     unit_modifiers: {
       shot_company:{
-        options:['brigade']
+        options:['Brigade']
       }
     }
-  }
+  },
+
+  {
+    id: 'hre',
+    title:'Holy Roman Empire',
+    sort: 100,
+    flag:'assets/icons/flags/hre.svg',
+    army_types:['standart_army','mounted_army', 'companies_army'],
+    regiment_modifiers: {
+      foot_regiment: {
+        units_available: ['tercio', 'classic_sqd'],
+      }
+    },
+    unit_modifiers: {
+      classic_sqd:{
+        options:['Large Squadron', 'Modernised']
+      },
+      shot_company:{
+        options:['Crossbowmen']
+      },
+      cuirassiers:{
+        options:['Large Formation', 'Heavy']
+      },
+      mtd_arquebus:{
+        options:['Large Formation']
+      }
+    }
+  },
+
+  {
+    id: 'protestant',
+    title:'German Protestant',
+    sort: 300,
+    flag:'assets/icons/flags/protestant.svg',
+    army_types:['standart_army','mounted_army', 'companies_army'],
+    regiment_modifiers: {
+      foot_regiment: {
+        units_available: ['classic_sqd', 'reformed'],
+      }
+    },
+    unit_modifiers: {
+      classic_sqd:{
+        options:['Large Squadron', 'Modernised']
+      },
+      reformed:{
+        options:['Mercenaries','+Greatswords']
+      },
+      shot_company:{
+        options:['Crossbowmen']
+      },
+      mtd_arquebus:{
+        options:['Large Formation']
+      },
+      cuirassiers:{
+        options:['Large Formation', 'Heavy']
+      }
+    }
+  },
+
+  {
+    id: 'denmark',
+    title:'Kingdom of Denmark-Norway',
+    sort: 400,
+    flag:'assets/icons/flags/denmark.svg',
+    army_types:['standart_army','mounted_army', 'companies_army'],
+    regiment_modifiers: {
+      foot_regiment: {
+        units_available: ['reformed'],
+      }
+    },
+    unit_modifiers: {
+      reformed:{
+        options:['Mercenaries']
+      }
+    }
+  },
+
+  {
+    id: 'france',
+    title:'Kingdom of France',
+    sort: 600,
+    flag:'assets/icons/flags/france.svg',
+    army_types:['standart_army','mounted_army', 'companies_army'],
+    regiment_modifiers: {
+      foot_regiment: {
+        units_available: ['reformed'],
+      }
+    },
+    unit_modifiers: {
+      cuirassiers:{
+        options:['Heavy']
+      }
+    }
+  },
+
+  {
+    id: 'trans',
+    title:'Principality of Transylvania',
+    sort: 700,
+    flag:'assets/icons/flags/trans.svg',
+    army_types:['standart_army','mounted_army', 'companies_army'],
+    regiment_modifiers: {
+      foot_regiment: {
+        units_available: ['classic_sqd'],
+      }
+    },
+    unit_modifiers: {
+      cuirassiers:{
+        options:['Heavy']
+      },
+      shot_company:{
+        options:['Crossbowmen']
+      }
+    }
+  },
+
+  {
+    id: 'united',
+    title:'United Provinces of the Low Countries',
+    sort: 900,
+    flag:'assets/icons/flags/united.svg',
+    army_types:['standart_army','mounted_army', 'companies_army'],
+    regiment_modifiers: {
+      foot_regiment: {
+        units_available: ['reformed'],
+      }
+    },
+    unit_modifiers: {
+      cuirassiers:{
+        options:['Heavy']
+      },
+      shot_company:{
+        options:['Crossbowmen']
+      }
+    }
+  },
 ];
 
 
@@ -157,14 +293,15 @@ export const regimentData = [
   {
     id: 'horse_regiment',
     title: 'Horse Regiment',
-    min_units: 2,
+    min_units: 1,
     max_units: 4,
     min_companies: 0,
     max_companies: 2,
+    companies_limit: 'units',
     min_commander_rank: 1,
     max_commander_rank: 4,
-    units_available: ['mtd_arquebus, cuirassiers, light_horse, dragoons'],
-    companies_available: default_companies_available,
+    units_available: ['mtd_arquebus', 'cuirassiers', 'light_horse', 'dragoons'],
+    companies_available: ['shot_company'],
     color: 'green'
   },
   {
@@ -200,16 +337,18 @@ export const unitData = [
     id: 'tercio',
     title: 'Tercio',
     base_cost: 140,
-    speed: 4,
-    melee: 4,
-    shoot: [3,2],
-    discipline: 5,
-    courage: 4,
-    stamina: 5,
-    infantry:4,
-    cavalry: 5,
-    salvo: 4,
-    artillery: 3,
+    stats: {
+      speed: 4,
+      melee: 4,
+      shoot: [3, 2],
+      discipline: 5,
+      courage: 4,
+      stamina: 5,
+      infantry: 4,
+      cavalry: 5,
+      salvo: 4,
+      artillery: 3
+    },
     rules: ['Large'],
     weaponry: ['Pikes','Arquebus/Musket']
   },
@@ -217,16 +356,18 @@ export const unitData = [
     id: 'classc_sqd',
     title: 'Classic Squadron',
     base_cost: 110,
-    speed: 4,
-    melee: 4,
-    shoot: [3,2],
-    discipline: 4,
-    courage: 4,
-    stamina: 4,
-    infantry:4,
-    cavalry: 5,
-    salvo: 4,
-    artillery: 3,
+    stats: {
+      speed: 4,
+      melee: 4,
+      shoot: [3, 2],
+      discipline: 4,
+      courage: 4,
+      stamina: 4,
+      infantry: 4,
+      cavalry: 5,
+      salvo: 4,
+      artillery: 3
+    },
     rules: <string[]>[],
     weaponry: ['Pikes','Arquebus/Musket']
   },
@@ -234,16 +375,18 @@ export const unitData = [
     id: 'reformed',
     title: 'Reformed Battalion',
     base_cost: 125,
-    speed: 4,
-    melee: 4,
-    shoot: [4,2],
-    discipline: 4,
-    courage: 4,
-    stamina: 4,
-    infantry:4,
-    cavalry: 5,
-    salvo: 4,
-    artillery: 4,
+    stats: {
+      speed: 4,
+      melee: 4,
+      shoot: [4, 2],
+      discipline: 4,
+      courage: 4,
+      stamina: 4,
+      infantry: 4,
+      cavalry: 5,
+      salvo: 4,
+      artillery: 4
+    },
     rules: ['Brigade'],
     weaponry: ['Pikes','Arquebus/Musket']
   },
@@ -251,16 +394,18 @@ export const unitData = [
     id: 'modern',
     title: 'Modern Squadron',
     base_cost: 110,
-    speed: 4,
-    melee: 3,
-    shoot: [4,4],
-    discipline: 5,
-    courage: 4,
-    stamina: 3,
-    infantry:4,
-    cavalry: 5,
-    salvo: 4,
-    artillery: 4,
+    stats: {
+      speed: 4,
+      melee: 3,
+      shoot: [4, 4],
+      discipline: 5,
+      courage: 4,
+      stamina: 3,
+      infantry: 4,
+      cavalry: 5,
+      salvo: 4,
+      artillery: 4
+    },
     rules: ['Brigade'],
     weaponry: ['Pikes','Musket']
   },
@@ -268,16 +413,18 @@ export const unitData = [
     id: 'cuirassiers',
     title: 'Cuirassiers',
     base_cost: 100,
-    speed: 7,
-    melee: 4,
-    shoot: [2,2],
-    discipline: 3,
-    courage: 4,
-    stamina: 3,
-    infantry:4,
-    cavalry: 4,
-    salvo: 3,
-    artillery: 4,
+    stats: {
+      speed: 7,
+      melee: 4,
+      shoot: [2, 2],
+      discipline: 3,
+      courage: 4,
+      stamina: 3,
+      infantry: 4,
+      cavalry: 4,
+      salvo: 3,
+      artillery: 4
+    },
     rules: ['Mobility','Evasion','Pursuit'],
     weaponry: ['Pistol']
   },
@@ -285,16 +432,18 @@ export const unitData = [
     id: 'mtd_arquebus',
     title: 'Mounted Arquebusier',
     base_cost: 65,
-    speed: 8,
-    melee: 3,
-    shoot: [3,3],
-    discipline: 3,
-    courage: 3,
-    stamina: 3,
-    infantry:4,
-    cavalry: 3,
-    salvo: 3,
-    artillery: 4,
+    stats: {
+      speed: 8,
+      melee: 3,
+      shoot: [3, 3],
+      discipline: 3,
+      courage: 3,
+      stamina: 3,
+      infantry: 4,
+      cavalry: 3,
+      salvo: 3,
+      artillery: 4
+    },
     rules: ['Mobility','Evasion','Pursuit','Caracole'],
     weaponry: ['Arquebus']
   },
@@ -302,16 +451,18 @@ export const unitData = [
     id: 'light_horse',
     title: 'Light Horse',
     base_cost: 50,
-    speed: 8,
-    melee: 3,
-    shoot: [2,2],
-    discipline: 2,
-    courage: 3,
-    stamina: 2,
-    infantry:4,
-    cavalry: 3,
-    salvo: 4,
-    artillery: 5,
+    stats: {
+      speed: 8,
+      melee: 3,
+      shoot: [2, 2],
+      discipline: 2,
+      courage: 3,
+      stamina: 2,
+      infantry: 4,
+      cavalry: 3,
+      salvo: 4,
+      artillery: 5,
+    },
     rules: ['Mobility','Evasion','Pursuit','Light', 'Extended Arc of Fire'],
     weaponry: ['Pistol']
   },
@@ -319,16 +470,18 @@ export const unitData = [
     id: 'dragoons',
     title: 'Dragoons',
     base_cost: 75,
-    speed: 8,
-    melee: 3,
-    shoot: [3,3],
-    discipline: 3,
-    courage: 3,
-    stamina: 3,
-    infantry:4,
-    cavalry: 3,
-    salvo: 3,
-    artillery: 4,
+    stats: {
+      speed: 8,
+      melee: 3,
+      shoot: [3, 3],
+      discipline: 3,
+      courage: 3,
+      stamina: 3,
+      infantry: 4,
+      cavalry: 3,
+      salvo: 3,
+      artillery: 4
+    },
     rules: ['Mobility','Evasion','Pursuit','Dragoon', 'Light'],
     weaponry: ['Musket']
   },
@@ -336,16 +489,18 @@ export const unitData = [
     id: 'light_art',
     title: 'Light Artillery',
     base_cost: 60,
-    speed: 6,
-    melee: 2,
-    shoot: [1,1],
-    discipline: 3,
-    courage: 2,
-    stamina: 1,
-    infantry:3,
-    cavalry: 3,
-    salvo: 5,
-    artillery: 5,
+    stats: {
+      speed: 6,
+      melee: 2,
+      shoot: [1, 1],
+      discipline: 3,
+      courage: 2,
+      stamina: 1,
+      infantry: 3,
+      cavalry: 3,
+      salvo: 5,
+      artillery: 5
+    },
     rules: ['Integral Command','Crew Defence', 'No Escape'],
     weaponry: <string[]>[]
   },
@@ -353,16 +508,18 @@ export const unitData = [
     id: 'med_art',
     title: 'Medium Artillery',
     base_cost: 60,
-    speed: 5,
-    melee: 2,
-    shoot: [1,1],
-    discipline: 3,
-    courage: 2,
-    stamina: 1,
-    infantry:3,
-    cavalry: 3,
-    salvo: 5,
-    artillery: 5,
+    stats: {
+      speed: 5,
+      melee: 2,
+      shoot: [1, 1],
+      discipline: 3,
+      courage: 2,
+      stamina: 1,
+      infantry: 3,
+      cavalry: 3,
+      salvo: 5,
+      artillery: 5
+    },
     rules: ['Integral Command','Crew Defence', 'No Escape'],
     weaponry: <string[]>[]
   },
@@ -370,36 +527,37 @@ export const unitData = [
     id: 'heavy_art',
     title: 'Heavy Artillery',
     base_cost: 60,
-    speed: 4,
-    melee: 2,
-    shoot: [1,1],
-    discipline: 3,
-    courage: 2,
-    stamina: 1,
-    infantry:3,
-    cavalry: 3,
-    salvo: 5,
-    artillery: 5,
+    stats: {
+      speed: 4,
+      melee: 2,
+      shoot: [1, 1],
+      discipline: 3,
+      courage: 2,
+      stamina: 1,
+      infantry: 3,
+      cavalry: 3,
+      salvo: 5,
+      artillery: 5
+    },
     rules: ['Integral Command','Crew Defence', 'No Escape'],
     weaponry: <string[]>[]
   },
-];
-
-export const companyData = [
   {
     id: 'shot_company',
     title: 'Shot Company',
     base_cost: 55,
-    speed: 5,
-    melee: 2,
-    shoot: [3,3],
-    discipline: 3,
-    courage: 3,
-    stamina: 2,
-    infantry:3,
-    cavalry: 3,
-    salvo: 4,
-    artillery: 4,
+    stats: {
+      speed: 5,
+      melee: 2,
+      shoot: [3, 3],
+      discipline: 3,
+      courage: 3,
+      stamina: 2,
+      infantry: 3,
+      cavalry: 3,
+      salvo: 4,
+      artillery: 4
+    },
     rules: ['Light'],
     weaponry: ['Arquebus']
   },
@@ -407,16 +565,18 @@ export const companyData = [
     id: 'pike_company',
     title: 'Pike Company',
     base_cost: 60,
-    speed: 4,
-    melee: 3,
-    shoot: [0,0],
-    discipline: 3,
-    courage: 3,
-    stamina: 3,
-    infantry:4,
-    cavalry: 5,
-    salvo: 4,
-    artillery: 4,
+    stats: {
+      speed: 4,
+      melee: 3,
+      shoot: [0, 0],
+      discipline: 3,
+      courage: 3,
+      stamina: 3,
+      infantry: 4,
+      cavalry: 5,
+      salvo: 4,
+      artillery: 4
+    },
     rules: <string[]>[],
     weaponry: ['Pikes']
   },
@@ -424,16 +584,18 @@ export const companyData = [
     id: 'melee_company',
     title: 'Melee Company',
     base_cost: 50,
-    speed: 5,
-    melee: 3,
-    shoot: [0,0],
-    discipline: 3,
-    courage: 3,
-    stamina: 3,
-    infantry:4,
-    cavalry: 4,
-    salvo: 4,
-    artillery: 4,
+    stats: {
+      speed: 5,
+      melee: 3,
+      shoot: [0, 0],
+      discipline: 3,
+      courage: 3,
+      stamina: 3,
+      infantry: 4,
+      cavalry: 4,
+      salvo: 4,
+      artillery: 4
+    },
     rules: <string[]>[],
     weaponry: <string[]>[]
   }
@@ -442,11 +604,12 @@ export const companyData = [
 
 export const optionData = {
   tercio: {
-    default:['Field Square','Modernised','Depleted','+Halberds'],
+    default_options:['Field Square','Modernised','Depleted','+Halberds'],
     options:{
       'Field Square':{
         cost:10,
-        rules: ['Squares','Extended Arc of Fire']
+        rules: ['Squares','Extended Arc of Fire'],
+        not_with:['Modernised']
       },
       'Viejo': {
         cost: 45,
@@ -478,8 +641,75 @@ export const optionData = {
       }
     }
   },
+
+  classic_sqd: {
+    default_options:['Raw','Veteran','Hesitant','Mercenaries', '+Halberds', '+Greatswords', 'Musket only', 'Musket only, Modernised'],
+    options:{
+      'Raw':{
+        cost:-10,
+        stats: {
+          discipline: 3
+        },
+        not_with:['Veteran']
+      },
+      'Veteran':{
+        cost:10,
+        stats: {
+          discipline: 5
+        },
+        not_with:['Raw']
+      },
+      'Large Squadron':{
+        cost:20,
+        stats: {
+          stamina: 5
+        },
+        rules: ['Large']
+      },
+      'Modernised':{
+        cost:15,
+        stats: {
+          shoot:[4,3]
+        }
+      },
+      'Hesitant':{
+        cost:-15,
+        stats: {
+          courage: 3
+        }
+      },
+      'Mercenaries':{
+        cost:-10,
+        rules:['Mercenaries']
+      },
+      '+Greatswords':{
+        cost:5,
+        weaponry:['Greatswords']
+      },
+      '+Halberds':{
+        cost:5,
+        weaponry:['Halberds']
+      },
+      'Musket only, Modernised':{
+        cost: 5,
+        stats: {
+          shoot: [4,4]
+        },
+        not_with:['Musket only'],
+        with_option: ['Modernised']
+      },
+      'Musket only':{
+        cost: 5,
+        stats: {
+          shoot: [3,3]
+        },
+        not_with:['Modernised', 'Musket only, Modernised']
+      },
+    }
+  },
+
   reformed: {
-    default: ['Veteran', 'Raw', 'Hesitant', 'Modernised', '+Halberds'],
+    default_options: ['Veteran', 'Raw', 'Hesitant', 'Modernised', '+Halberds'],
     options: {
       'Veteran':{
         cost:10,

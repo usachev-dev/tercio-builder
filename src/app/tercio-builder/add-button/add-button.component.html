@@ -1,0 +1,18 @@
+<div [class]="'add-button-block '+color+' ' + location" >
+  <div class="button-plus-wrapper">
+    <button class="button-plus"
+            (click)="plusButton($event)"
+            *ngIf="!addingItem">
+      <span class="plus-circle"></span>
+      <span class="caption" translate>{{caption}}</span>
+    </button>
+  </div>
+  <div class="item-choice-block" *ngIf="addingItem">
+    <div class="item-choice"
+         *ngFor="let item of items"
+         (click)="addItem(item.id)"
+         translate>
+      {{item.title}}
+    </div>
+  </div>
+</div>

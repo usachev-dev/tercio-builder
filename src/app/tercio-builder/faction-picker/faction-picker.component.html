@@ -7,11 +7,11 @@
     <div class="flag">
       <img src="{{faction.flag}}" alt="">
     </div>
-    <div class="title" translate>{{faction.title}}</div>
+    <h2 class="title" translate>{{faction.title}}</h2>
     <div class="army-type-select" *ngIf="chosen_faction == i">
-      <div class="army-type" *ngFor="let type of faction.army_types" routerLink="/{{faction.id}}/{{type}}" translate>
+      <h3 class="army-type" *ngFor="let type of faction.army_types" routerLink="/{{faction.id}}/{{type}}" translate>
         {{ getTypeById(type).title }}
-      </div>
+      </h3>
     </div>
   </div>
 </div>

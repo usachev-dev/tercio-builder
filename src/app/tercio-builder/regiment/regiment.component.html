@@ -1,12 +1,54 @@
-<div [class]="'regiment_container '+ regiment_data.color">
-  <h2>{{regiment_data.title}}</h2>
-  <button class="delete" (click)="deleteRegiment()">Delete</button>
-  <app-commander [rank]="regiment_data.min_commander_rank"></app-commander>
-  <app-unit *ngFor="let unit of units" [unit_type]="unit"></app-unit>
-  <div class="button-plus-wrapper"
-  *ngIf="units_available || companies_available">
-    <button class="add-unit plus-circle"></button>
+<div [class]="'regiment_container ' + regiment_data.color">
+  <h2 class="title">{{regiment_data.title}}</h2>
+  <button class="delete" (click)="deleteRegiment()"><span class="fa fa-trash-o"></span></button>
+  <div class="cost">{{cost}} <span translate>pts.</span></div>
+  <div class="limits-block">
+    <div [class]="'limit ' + (units.length<regiment_data.min_units ? 'has-error' : '')">
+      <span translate>Units: </span>
+      {{units.length}}/{{regiment_data.max_units}}
+      <span *ngIf="units.length<regiment_data.min_units">({{regiment_data.min_units}}+)</span>
+    </div>
+    <div [class]="'limit ' + (companies.length>getMaxCompanies() ? 'has-error' : '')">
+      <span translate>Companies: </span>
+      {{companies.length}}/{{getMaxCompanies()}}
+    </div>
   </div>
+
+  <app-commander
+    [rank]="regiment_data.min_commander_rank"
+    #commander
+  ></app-commander>
+  <app-unit *ngFor="let unit of units; let i = index"
+            [unit_type]="unit"
+            [faction]="faction"
+            (delete_unit)="deleteUnit(i)"
+            (update_cost)="updateCost()"
+  ></app-unit>
+
+  <app-add-button
+    *ngIf="units_available.length>0"
+    [items]="units_available"
+    [caption]="'Add unit'"
+    [color]="regiment_data.color"
+    [location]="'regiment'"
+    (add_item)="addUnit($event)">
+  </app-add-button>
+
+  <app-unit *ngFor="let unit of companies; let i = index"
+            [unit_type]="unit"
+            [is_company] = "true"
+            [faction]="faction"
+            (delete_company)="deleteCompany(i)"
+  ></app-unit>
+
+  <app-add-button
+    *ngIf="companies_available.length>0"
+    [items]="companies_available"
+    [caption]="'Add company'"
+    [color]="'yellow'"
+    [location]="'regiment'"
+    (add_item)="addCompany($event)">
+  </app-add-button>
 
 </div>
 

@@ -1,35 +1,117 @@
-<span>{{unit_type}}</span>
-
-<!--<div class="stats-block">-->
-  <!--<div class="stat">-->
-    <!--<div class="stat-name">-->
-      <!--<img src="assets/icons/stats/speed.svg" alt="">-->
-    <!--</div>-->
-    <!--<div class="stat-value">-->
-      <!--{{unit.stats.speed}}-->
-    <!--</div>-->
-  <!--</div>-->
-  <!--<div class="stat">-->
-    <!--<div class="stat-name">-->
-      <!--<img src="assets/icons/stats/speed.svg" alt="">-->
-    <!--</div>-->
-    <!--<div class="stat-value">-->
-      <!--{{unit.stats.speed}}-->
-    <!--</div>-->
-  <!--</div>-->
-  <!--<div class="stat">-->
-    <!--<div class="stat-name">-->
-      <!--<img src="assets/icons/stats/speed.svg" alt="">-->
-    <!--</div>-->
-    <!--<div class="stat-value">-->
-      <!--{{unit.stats.speed}}-->
-    <!--</div>-->
-  <!--</div><div class="stat">-->
-    <!--<div class="stat-name">-->
-      <!--<img src="assets/icons/stats/speed.svg" alt="">-->
-    <!--</div>-->
-    <!--<div class="stat-value">-->
-      <!--{{unit.stats.speed}}-->
-    <!--</div>-->
-  <!--</div>-->
-<!--</div>-->
+<div class="unit-container">
+  <div class="stats-block">
+    <div class="title">
+      <span translate>{{data.title}}</span>
+      <button class="delete" (click)="deleteUnit()">
+        <span class="fa fa-trash-o"></span>
+      </button>
+    </div>
+    <div class="stat">
+      <div class="stat-name">
+        <img src="assets/icons/stats/speed.svg" alt="Speed" title="Speed">
+      </div>
+      <div class="stat-value">
+        {{stats.speed}}
+      </div>
+    </div>
+    <div class="stat">
+      <div class="stat-name">
+        <img src="assets/icons/stats/melee.svg" alt="Melee" title="Melee">
+      </div>
+      <div class="stat-value">
+        {{stats.melee}}
+      </div>
+    </div>
+    <div class="stat">
+      <div class="stat-name">
+        <img src="assets/icons/stats/shoot.svg" alt="Shoot" title="Shoot">
+      </div>
+      <div class="stat-value">
+        {{stats.shoot[0]}}<span *ngIf="stats.shoot[0]!=stats.shoot[1]">/{{stats.shoot[1]}}</span>
+      </div>
+    </div>
+    <div class="stat">
+      <div class="stat-name">
+        <img src="assets/icons/stats/disc.svg" alt="Discipline" title="Discipline">
+      </div>
+      <div class="stat-value">
+        {{stats.discipline}}
+      </div>
+    </div>
+    <div class="stat">
+      <div class="stat-name">
+        <img src="assets/icons/stats/courage.svg" alt="Courage" title="Courage">
+      </div>
+      <div class="stat-value">
+        {{stats.courage}}
+      </div>
+    </div>
+    <div class="stat">
+      <div class="stat-name">
+        <img src="assets/icons/stats/stamina.svg" alt="Stamina" title="Stamina">
+      </div>
+      <div class="stat-value">
+        {{stats.stamina}}
+      </div>
+    </div>
+    <div class="stat def">
+      <div class="stat-name">
+        <img src="assets/icons/stats/inf.svg" alt="Defence from Infantry" title="Defence from Infantry">
+      </div>
+      <div class="stat-value">
+        {{stats.infantry}}
+      </div>
+    </div>
+    <div class="stat def">
+      <div class="stat-name">
+        <img src="assets/icons/stats/cav.svg" alt="Defence from Cavalry" title="Defence from Cavalry">
+      </div>
+      <div class="stat-value">
+        {{stats.cavalry}}
+      </div>
+    </div>
+    <div class="stat def">
+      <div class="stat-name">
+        <img src="assets/icons/stats/salvo.svg" alt="Defence from Salvo" title="Defence from Salvo">
+      </div>
+      <div class="stat-value">
+        {{stats.salvo}}
+      </div>
+    </div>
+    <div class="stat def">
+      <div class="stat-name">
+        <img src="assets/icons/stats/art.svg" alt="Defence from Artillery" title="Defence from Artillery">
+      </div>
+      <div class="stat-value">
+        {{stats.artillery}}
+      </div>
+    </div>
+    <div class="stat">
+      {{cost}} <span translate>pts.</span>
+    </div>
+  </div>
+</div>
+<div class="rules-block" *ngIf="weaponry.length>0 || rules.length>0 || options_chosen.length>0">
+  <div class="weapons" *ngIf="weaponry.length>0">
+    <span translate>Weaponry: <span translate class="weapon" *ngFor="let weapon of weaponry">{{weapon}}</span></span>
+  </div>
+  <div class="rules" *ngIf="rules.length>0">
+    <span translate>Rules: <span translate class="rule" *ngFor="let rule of rules">{{rule}}</span></span>
+  </div>
+  <div class="options" *ngIf="options_chosen.length>0">
+    <span translate>Options chosen:
+      <span translate class="option-chosen" *ngFor="let option of options_chosen">
+        <button class="remove-option fa fa-trash-o" (click)="removeOption(option.id)"></button>
+        <span class="option-chosen-caption">{{option.id}}</span>
+      </span>
+    </span>
+  </div>
+</div>
+<div class="options-block">
+  <button class="option"
+          *ngFor="let option of options_available"
+          (click)="addOption(option.id)">
+    <span class="plus-circle"></span>
+    <span class="option-caption" translate>{{option.id}}</span>
+  </button>
+</div>

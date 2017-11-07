@@ -13,11 +13,31 @@
 @import "theme/theme";
 
 @import url('https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i&subset=cyrillic');
+@import url('https://fonts.googleapis.com/css?family=PT+Serif:400,400i,700&subset=cyrillic');
 
 
 //colors
 
 
+$green-bg: #F1F7F1;
+$green-border: #B8D7B6;
+$green-border-hover: #87BB84;
+
+$blue-bg: #F2F7FA;
+$blue-border: #B5C9D6;
+$blue-border-hover: #84A4BB;
+
+$red-bg: #F7F2F0;
+$red-border: #45494A;
+$red-border-hover: #BB928B;
+
+$yellow-bg: #F7F7F0;
+$yellow-border: #D6D4B5;
+$yellow-border-hover: #BBB784;
+
+$regiment-bg: #fefdf4;
+$regiment-border:#ccc8ad;
+$regiment-border-hover: #7d8577;
 
 //breakpoints
 $xs: (max-width: 559px);
@@ -30,11 +50,31 @@ $smplus: (min-width: 560px);
 $mdplus: (min-width: 768px);
 $lgplus: (min-width: 992px);
 
-* {
+
+
+
+
+
+h1,h2,h3,h4,h2 {
   font-family: 'Playfair Display', serif;
+}
+* {
+  font-family: 'PT Serif', serif;
+}
+
+button {
+  background: none;
+  border: none;
+  box-shadow: none;
+  cursor: pointer;
+}
+
+.has-error {
+  color: red;
 }
 
 .plus-circle {
+  display: inline-block;
   background-color: white;
   cursor: pointer;
   border-radius: 100%;
@@ -46,8 +86,8 @@ $lgplus: (min-width: 992px);
   &:before, &:after {
     background-color: black;
     position: absolute;
-    left: 23px;
-    top: 12.5px;
+    left: 30px;
+    top: 13px;
     content: ' ';
     height: 25px;
     width: 2px;

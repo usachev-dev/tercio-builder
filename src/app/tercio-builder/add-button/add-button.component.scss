@@ -1,0 +1,146 @@
+@import "../../../main";
+
+@mixin button-theme ($bg-color, $border-color, $border-hover) {
+  border-color: $border-color;
+  background-color: $bg-color;
+  .button-plus {
+    .plus-circle {
+      background-color: $bg-color;
+      border-color: $border-color;
+      &:before, &:after {
+        background-color: $border-color;
+      }
+    }
+  }
+  .button-plus:hover {
+    .plus-circle {
+      border-color: $border-hover;
+      &:before, &:after {
+        background-color: $border-hover;
+      }
+    }
+  }
+  .item-choice {
+    border-bottom-color: $border-color;
+    @media #{$smplus}{
+      border-right-color: $border-color;
+    }
+  }
+}
+
+
+.add-button-block.neutral {
+  @include button-theme($regiment-bg,$regiment-border,$regiment-border-hover);
+}
+.add-button-block.blue {
+  @include button-theme($blue-bg,$blue-border,$blue-border-hover);
+}
+.add-button-block.green {
+  @include button-theme($green-bg,$green-border,$green-border-hover);
+}
+.add-button-block.yellow {
+  @include button-theme($yellow-bg,$yellow-border,$yellow-border-hover);
+}
+.add-button-block.red {
+  @include button-theme($red-bg,$red-border,$red-border-hover);
+}
+
+.add-button-block.roster {
+  min-height: 100px;
+}
+
+.add-button-block.regiment {
+  min-height: 50px;
+  margin: 15px 0;
+  .plus-circle {
+    width: 30px;
+    height: 30px;
+    background-color: transparent;
+    &:before, &:after {
+      height: 15px;
+      left: 25px;
+      top: 8px;
+    }
+  }
+  .caption {
+    margin-left: 0;
+  }
+  .button-plus-wrapper {
+    position: relative;
+    span {
+      line-height: 30px;
+      display: inline-block;
+      height: 30px;
+      vertical-align: top;
+      margin-right: 8px;
+      margin-left: 5px;
+    }
+  }
+
+  .item-choice{
+    &:hover {
+      background-color: rgba(255,255,255,0.9);
+    }
+  }
+}
+
+.add-button-block {
+  position: relative;
+  width: 100%;
+  border-width: 1px;
+  border-style: solid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.item-choice-block {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  @media #{$smplus}{
+    flex-direction: row;
+  }
+}
+
+.button-plus-wrapper{
+  position: relative;
+}
+.button-plus {
+  .caption {
+    vertical-align: top;
+    line-height: 50px;
+    margin-left: 5px;
+  }
+
+}
+
+
+.item-choice {
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  text-align: center;
+  cursor: pointer;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  flex: 1;
+  width: 100%;
+  &:hover {
+    background-color: white;
+  }
+  @media #{$smplus}{
+    border-right-width: 1px;
+    border-right-style: solid;
+    border-bottom: none;
+    width: auto;
+  }
+  &:last-child {
+    border-right: none;
+    border-botton: none;
+  }
+}

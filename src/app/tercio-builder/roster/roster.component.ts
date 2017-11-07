@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChildren, QueryList } from '@angular/core';
 import { RegimentComponent } from '../regiment/regiment.component';
 import { ActivatedRoute } from '@angular/router';
 import { TercioDataService } from "../tercio-data.service";
@@ -15,13 +15,16 @@ export class RosterComponent implements OnInit {
   army_type: string;
   armyTypeData: any;
   regimentData: any;
-  addingRegiment: boolean = false;
   availableRegiments: any[];
 
-  plusButton(e: any){
-    this.addingRegiment = true;
-    e.stopPropagation();
+  cost:number = 0;
+
+  @ViewChildren(RegimentComponent) regiments_query: QueryList<RegimentComponent>;
+  updateCost(){
+    setTimeout(() => { this.cost = this.regiments_query.reduce((sum,value)=>sum+value.cost,0); }, 0);
   }
+
+
   getAvailableRegiments(){
     let result:any[] = [];
     _.each(this.regimentData, (regiment_type: any)=>{
@@ -42,6 +45,7 @@ export class RosterComponent implements OnInit {
   }
   deleteRegiment(index: number): void{
     this.regiments.splice(index,1);
+    this.updateCost();
   }
 
   getRegimentNumber(type?: string): number{
@@ -57,6 +61,12 @@ export class RosterComponent implements OnInit {
       return this.regiments.length;
     }
   }
+  getFactionTitle() {
+    return this.dataService.getFactionById(this.faction).title;
+  }
+  getArmyTypeTitle() {
+    return this.dataService.getArmyTypeById(this.army_type).title;
+  }
   constructor(
     private route: ActivatedRoute,
     private dataService: TercioDataService) {
@@ -64,17 +74,20 @@ export class RosterComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.dataService.initData();
     this.route.params.subscribe(params => {
       this.faction = params['faction'];
       this.army_type = params['army_type'];
     });
     this.armyTypeData = this.dataService.getArmyTypeById(this.army_type);
-    this.regimentData = this.dataService.getRegimentData(this.faction, this.army_type);
+    this.regimentData = this.dataService.getRegimentData(this.faction);
     this.regiments = [];
     this.availableRegiments = this.getAvailableRegiments();
     this.initRoster();
   }
-
+  ngAfterViewInit() {
+    this.updateCost();
+  }
   initRoster(){
     _.each(this.armyTypeData.regiments, (regiment_type: any)=>{
       for(let i=0;i<regiment_type.min; i++){
