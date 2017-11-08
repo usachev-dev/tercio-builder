@@ -37,7 +37,7 @@ $yellow-border-hover: #BBB784;
 
 $regiment-bg: #fefdf4;
 $regiment-border:#ccc8ad;
-$regiment-border-hover: #7d8577;
+$regiment-border-hover: #88927b;
 
 //breakpoints
 $xs: (max-width: 559px);
@@ -86,7 +86,7 @@ button {
   &:before, &:after {
     background-color: black;
     position: absolute;
-    left: 30px;
+    left: 24px;
     top: 13px;
     content: ' ';
     height: 25px;

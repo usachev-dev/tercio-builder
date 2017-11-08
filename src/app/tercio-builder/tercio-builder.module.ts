@@ -9,7 +9,7 @@ import { CommanderComponent } from './commander/commander.component';
 import { RegimentComponent } from './regiment/regiment.component';
 import { UnitComponent } from './unit/unit.component';
 import { FactionPickerComponent } from './faction-picker/faction-picker.component';
-import { AddButtonComponent } from './add-button/add-button.component';
+import { AddButtonComponent } from '../controls/add-button/add-button.component';
 
 import { TercioDataService } from "./tercio-data.service";
 

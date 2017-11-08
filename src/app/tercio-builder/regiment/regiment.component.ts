@@ -115,5 +115,8 @@ export class RegimentComponent implements OnInit {
     setTimeout(() => { this.cost = this.units_query.reduce((sum,value)=>sum+value.cost,0); }, 0);
     this.update_cost.emit();
   }
+  isEmpty(o: any){
+    return _.isEmpty(o);
+  }
 }
 

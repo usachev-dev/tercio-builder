@@ -1,13 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output} from '@angular/core';
+import { TercioDataService } from "../tercio-data.service";
 
 @Component({
   selector: 'app-commander',
   templateUrl: './commander.component.html',
   styleUrls: ['./commander.component.scss'],
-  inputs: ['rank']
+  inputs: ['commander_data']
 })
 export class CommanderComponent implements OnInit {
-  rank: number;
+  commander_data: any;
 
   constructor() { }
 

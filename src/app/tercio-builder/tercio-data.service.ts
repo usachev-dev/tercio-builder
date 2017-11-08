@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import * as data from './data'
+import * as data from './data/data'
 import * as _ from 'lodash';
 
 @Injectable()
@@ -67,7 +67,17 @@ export class TercioDataService {
 
     _.each(option_list,(o)=>{
       result.options.push (
-        _.extend({id:o, stats:{}, cost:0, rules:[], weaponry:[], not_with:[]}, options.options[o]));
+        _.extend({
+          id:o,
+          stats:{},
+          cost:0,
+          rules:[],
+          rules_loss:[],
+          weaponry:[],
+          weaponry_loss:[],
+          not_with:[],
+          with_option:[]
+        }, options.options[o]));
     });
     return result;
 

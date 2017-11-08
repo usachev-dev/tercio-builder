@@ -15,7 +15,11 @@
     <div class="limit">{{cost}} <span translate>pts.</span></div>
   </div>
 
-  <app-commander (update_cost)="updateCost()"></app-commander>
+  <app-commander
+    *ngIf="!isEmpty(armyTypeData.commander)"
+    [commander_data]="armyTypeData.commander"
+    (update_cost)="updateCost()">
+  </app-commander>
   <div class="" *ngFor='let regiment of regiments; let index = index'>
     <app-regiment
       [regiment_data] ="regiment"

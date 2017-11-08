@@ -14,9 +14,9 @@
     </div>
   </div>
 
-  <app-commander
-    [rank]="regiment_data.min_commander_rank"
-    #commander
+  <app-commander *ngIf="!isEmpty(regiment_data.commander)"
+                 [commander_data]="regiment_data.commander"
+                 (update_cost)="updateCost()"
   ></app-commander>
   <app-unit *ngFor="let unit of units; let i = index"
             [unit_type]="unit"

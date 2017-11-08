@@ -98,4 +98,7 @@ export class RosterComponent implements OnInit {
       }
     });
   }
+  isEmpty(o: any){
+    return _.isEmpty(o);
+  }
 }

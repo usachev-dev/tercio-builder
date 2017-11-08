@@ -51,7 +51,7 @@ export class UnitComponent implements OnInit {
     this.initValues();
 
     this.options_all = this.data.options;
-    this.options_available = this.options_all;
+    this.updateAvailableOptions();
     //debugger;
   }
 
@@ -91,12 +91,15 @@ export class UnitComponent implements OnInit {
       this.cost = this.cost + option.cost;
       _.extend(this.stats, option.stats);
       this.rules = _.union(this.rules, option.rules);
+      this.rules = _.difference(this.rules, option.rules_loss);
       this.weaponry = _.union(this.weaponry, option.weaponry);
+      this.weaponry = _.difference(this.weaponry, option.weaponry_loss)
     });
   }
 
   updateAvailableOptions(){
     this.options_available = _.difference(this.options_all, this.options_chosen);
+
     //убираем опции, несовместимые с добавленными
     _.each(this.options_chosen, (option: any)=>{
       _.each(option.not_with, (o: string)=>{
@@ -105,7 +108,14 @@ export class UnitComponent implements OnInit {
         })
       });
     });
-    //добавляем опции, уникальные для добавленных (with_option)
+    //убираем опции, для которых требуется опция, которая не выбрана
+    _.remove(this.options_available, (option: any, index: number)=>{
+      return (!_.isEmpty(option.with_option)
+        &&
+        !(_.find(this.options_chosen,(o)=>{
+          return _.includes(option.with_option,o.id)
+        })))
+    });
   }
 }
 
