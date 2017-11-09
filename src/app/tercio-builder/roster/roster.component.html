@@ -16,9 +16,11 @@
   </div>
 
   <app-commander
-    *ngIf="!isEmpty(armyTypeData.commander)"
+    *ngIf="!isEmpty(armyTypeData.commander) && (armyTypeData.commander.max_rank>=0)"
     [commander_data]="armyTypeData.commander"
-    (update_cost)="updateCost()">
+    (update_cost)="updateCost()"
+    #cnc
+  >
   </app-commander>
   <div class="" *ngFor='let regiment of regiments; let index = index'>
     <app-regiment

@@ -1,5 +1,6 @@
-import { Component, OnInit, ViewChildren, QueryList } from '@angular/core';
+import { Component, OnInit, ViewChildren, ViewChild, QueryList } from '@angular/core';
 import { RegimentComponent } from '../regiment/regiment.component';
+import { CommanderComponent } from '../commander/commander.component';
 import { ActivatedRoute } from '@angular/router';
 import { TercioDataService } from "../tercio-data.service";
 import * as _ from 'lodash';
@@ -20,8 +21,13 @@ export class RosterComponent implements OnInit {
   cost:number = 0;
 
   @ViewChildren(RegimentComponent) regiments_query: QueryList<RegimentComponent>;
+  @ViewChild('cnc') cnc: CommanderComponent;
+
   updateCost(){
-    setTimeout(() => { this.cost = this.regiments_query.reduce((sum,value)=>sum+value.cost,0); }, 0);
+    setTimeout(() => {
+      this.cost = this.regiments_query.reduce((sum,value)=>sum+value.cost,0);
+      this.cost += this.cnc.cost;
+      }, 0);
   }
 
 

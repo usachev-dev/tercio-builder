@@ -1,5 +1,6 @@
 import {Component, OnInit, Input, EventEmitter, Output, ViewChildren, QueryList} from '@angular/core';
 import { UnitComponent } from '../unit/unit.component';
+import { CommanderComponent } from '../commander/commander.component';
 import { TercioDataService } from "../tercio-data.service";
 import * as _ from 'lodash';
 
@@ -19,6 +20,7 @@ export class RegimentComponent implements OnInit {
   faction: string;
 
   @ViewChildren(UnitComponent) units_query: QueryList<UnitComponent>;
+  @ViewChildren(CommanderComponent) commander_query: QueryList<CommanderComponent>;
 
   cost: number;
 
@@ -112,7 +114,10 @@ export class RegimentComponent implements OnInit {
     this.updateCost();
   }
   updateCost(){
-    setTimeout(() => { this.cost = this.units_query.reduce((sum,value)=>sum+value.cost,0); }, 0);
+    setTimeout(() => {
+      this.cost = this.units_query.reduce((sum,value)=>sum+value.cost,0);
+      this.cost += this.commander_query.reduce((sum,value)=>sum+value.cost,0);
+      }, 0);
     this.update_cost.emit();
   }
   isEmpty(o: any){

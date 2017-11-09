@@ -1,0 +1,56 @@
+.commander {
+  border: 1px solid rgba(0,0,0,0.2);
+  padding: 10px;
+  margin: 10px 0;
+}
+
+
+
+.rank-button{
+  padding: 0;
+  &:not(:disabled):hover {
+    .plus-circle {
+      opacity: 0.9;
+    }
+  }
+  &:disabled{
+    opacity: 0.3;
+  }
+}
+
+.trait-block {
+  .button-block {
+    width: 35px;
+    text-align: center;
+    button{
+      vertical-align: middle;
+      width: 30px;
+      opacity: 0.8;
+      &:hover{
+        opacity: 1;
+      }
+    }
+  }
+}
+.plus-circle {
+  width: 15px;
+  height: 15px;
+  background: transparent;
+  position: relative;
+  opacity: 0.6;
+  transition: opacity 0.3s;
+  margin-top: -4px;
+  vertical-align: middle;
+  &:after,&:before {
+    height: 7px;
+    width: 1px;
+    left: 6px;
+    top: 3px;
+  }
+  &.minus {
+    &:after{
+      display: none;
+    }
+  }
+
+}

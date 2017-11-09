@@ -83,6 +83,13 @@ export class TercioDataService {
 
   }
 
+
+  getTraits(){
+    return this.data.traits;
+  }
+  getVirtues(){
+    return this.data.virtues;
+  }
   initData(){
     this.data  = _.cloneDeep(data);
   }

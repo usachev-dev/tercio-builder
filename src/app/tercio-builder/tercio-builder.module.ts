@@ -10,6 +10,8 @@ import { RegimentComponent } from './regiment/regiment.component';
 import { UnitComponent } from './unit/unit.component';
 import { FactionPickerComponent } from './faction-picker/faction-picker.component';
 import { AddButtonComponent } from '../controls/add-button/add-button.component';
+import { ModalComponent } from '../controls/modal/modal.component';
+
 
 import { TercioDataService } from "./tercio-data.service";
 
@@ -20,7 +22,15 @@ import { TercioDataService } from "./tercio-data.service";
     TercioBuilderRoutingModule,
     TranslateModule
   ],
-  declarations: [RosterComponent, CommanderComponent, RegimentComponent, UnitComponent, FactionPickerComponent, AddButtonComponent],
+  declarations: [
+    RosterComponent,
+    CommanderComponent,
+    RegimentComponent,
+    UnitComponent,
+    FactionPickerComponent,
+    AddButtonComponent,
+    ModalComponent
+  ],
   providers:[TercioDataService]
 })
 export class TercioBuilderModule { }

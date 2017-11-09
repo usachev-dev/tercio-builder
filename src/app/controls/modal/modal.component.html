@@ -1,0 +1,15 @@
+
+<div
+  class="modal-overlay"
+  (click)="closeModal($event)"
+>
+  <div
+    [class]="'modal-window '+ modal_class"
+    (click)="$event.stopPropagation()"
+  >
+    <div class="content">
+
+    </div>
+    <ng-content></ng-content>
+  </div>
+</div>

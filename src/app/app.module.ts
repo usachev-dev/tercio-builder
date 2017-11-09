@@ -24,7 +24,6 @@ import { TercioBuilderModule } from './tercio-builder/tercio-builder.module';
     TercioBuilderModule,
     SharedModule,
     AboutModule,
-
     AppRoutingModule
   ],
   declarations: [AppComponent],

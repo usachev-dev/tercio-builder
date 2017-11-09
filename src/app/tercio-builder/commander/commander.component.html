@@ -1,3 +1,46 @@
-<p>
-  commander works!
-</p>
+<div class="commander">
+  <strong style="margin-right: 10px;">Commander Rank:</strong>
+  <button
+    class="rank-button"
+    [disabled]="rank<=commander_data.min_rank"
+    (click)="rankReduce()"
+  ><span class="plus-circle  minus"></span>
+  </button>
+  <strong>{{rank}}</strong>
+  <button
+    class="rank-button"
+    [disabled]="rank>=commander_data.max_rank"
+    (click)="rankIncrease()"
+  ><span class="plus-circle"></span>
+  </button>
+  <span class="cost" style="margin-left: 10px;">{{cost}} <span translate>pts.</span></span>
+
+  <table style="width:100%" class="trait-block">
+    <tr>
+      <th rowspan="2" class="button-block">
+        <button class="edit-button" (click)="openModal()"><span class="fa fa-edit"></span></button>
+      </th>
+      <td>
+        <div class="virtues">
+          <strong>Virtues: </strong>
+          <span class="virtue" *ngFor="let virtue of virtues">{{virtue.id}}</span>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div class="traits">
+          <strong>Traits: </strong>
+          <span class="trait" *ngFor="let trait of traits">{{trait.id}}</span>
+        </div>
+      </td>
+    </tr>
+  </table>
+
+  <app-modal
+    *ngIf="modal_open"
+    (close_modal)="closeModal($event)"
+  >
+
+  </app-modal>
+</div>

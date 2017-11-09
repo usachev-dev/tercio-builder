@@ -28,7 +28,7 @@ $blue-border: #B5C9D6;
 $blue-border-hover: #84A4BB;
 
 $red-bg: #F7F2F0;
-$red-border: #45494A;
+$red-border: #ba9a99;
 $red-border-hover: #BB928B;
 
 $yellow-bg: #F7F7F0;
@@ -51,13 +51,83 @@ $mdplus: (min-width: 768px);
 $lgplus: (min-width: 992px);
 
 
+body {
+  margin: 0;
+}
 
-
-
+body.modal-open {
+  overflow: hidden;
+}
 
 h1,h2,h3,h4,h2 {
   font-family: 'Playfair Display', serif;
 }
+
+h1 {
+  font-size: 24px;
+  @media #{$smplus}{
+    font-size: 26px;
+  }
+  @media #{$mdplus}{
+    font-size: 28px;
+  }
+  @media #{$lgplus}{
+    font-size: 30px;
+  }
+}
+
+h2 {
+  font-size: 21px;
+  @media #{$smplus}{
+    font-size: 23px;
+  }
+  @media #{$mdplus}{
+    font-size: 25px;
+  }
+  @media #{$lgplus}{
+    font-size: 27px;
+  }
+}
+
+h3 {
+  font-size: 18px;
+  @media #{$smplus}{
+    font-size: 20px;
+  }
+  @media #{$mdplus}{
+    font-size: 22px;
+  }
+  @media #{$lgplus}{
+    font-size: 24px;
+  }
+}
+
+h4 {
+  font-size: 16px;
+  @media #{$smplus}{
+    font-size: 18px;
+  }
+  @media #{$mdplus}{
+    font-size: 20px;
+  }
+  @media #{$lgplus}{
+    font-size: 22px;
+  }
+}
+
+h5 {
+  font-size: 16px;
+  @media #{$smplus}{
+    font-size: 16px;
+  }
+  @media #{$mdplus}{
+    font-size: 18px;
+  }
+  @media #{$lgplus}{
+    font-size: 19px;
+  }
+}
+
 * {
   font-family: 'PT Serif', serif;
 }
