@@ -16,7 +16,14 @@ h2 {
   display: inline-block;
   font-style: italic;
 }
-
+.print-button {
+  float: right;
+  opacity: 0.8;
+  font-size: 30px;
+  &:hover {
+    opacity: 1;
+  }
+}
 .roster-container{
   padding: 10px;
   margin: auto;

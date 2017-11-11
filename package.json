@@ -1,8 +1,9 @@
 {
   "name": "tercios-builder",
-  "version": "0.9",
+  "version": "0.9.0",
   "private": true,
   "license": "MIT",
+  "author": "Alexey Usachev",
   "scripts": {
     "ng": "ng",
     "build": "npm run env -s && ng build --prod",

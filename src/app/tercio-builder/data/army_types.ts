@@ -1,7 +1,9 @@
+const commander_note="Regiment commanders must have the same or lower rank than CnC. Battle group commanders must have lower rank than CnC."
 export const armyTypeData = [
   {
     id:'standart_army',
     title: 'Standart Army',
+    special: commander_note,
     commander:{
       cost:{
         2:0,
@@ -38,7 +40,7 @@ export const armyTypeData = [
   {
     id: 'mounted_army',
     title: 'Mounted Army',
-    special:'2 Horse Regiments must be of the same type of cavalry. There must be more Horse regiments than from any other type. Artillery must have Carthorses.',
+    special:'2 Horse Regiments must be of the same type of cavalry. There must be more Horse regiments than from any other type. Artillery must have Carthorses. '+commander_note,
     commander:{
       cost:{
         2:0,
@@ -76,6 +78,7 @@ export const armyTypeData = [
   {
     id: 'companies_army',
     title: 'Companies Army',
+    special: commander_note,
     commander:{
       cost:{
         2:0,

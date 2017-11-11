@@ -1,6 +1,7 @@
 <div class="roster-container">
   <h1 translate>{{getFactionTitle()}}</h1>
   <h2 translate>{{getArmyTypeTitle()}}</h2>
+  <button class="print-button" onclick="window.print();"><span class="fa fa-print"></span></button>
   <div class="limits-block">
     <div [class]="'limit '+(getRegimentNumber(regiment_type.id)<regiment_type.min ? 'has-error' : '')"
          *ngFor="let regiment_type of armyTypeData.regiments">
