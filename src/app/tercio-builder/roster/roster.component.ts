@@ -19,6 +19,7 @@ export class RosterComponent implements OnInit {
   availableRegiments: any[];
 
   cost:number = 0;
+  glossary: string[] = [];
 
   @ViewChildren(RegimentComponent) regiments_query: QueryList<RegimentComponent>;
   @ViewChild('cnc') cnc: CommanderComponent;
@@ -27,9 +28,14 @@ export class RosterComponent implements OnInit {
     setTimeout(() => {
       this.cost = this.regiments_query.reduce((sum,value)=>sum+value.cost,0);
       this.cost += this.cnc.cost;
+      this.updateGlossary();
       }, 0);
   }
-
+  updateGlossary(){
+    let list: string[] = [], result: any[];
+    this.regiments_query.forEach((item)=>{list = _.concat(list,item.glossary);});
+    list=_.sortBy(_.uniq(list), (o: string)=>{return o});
+  }
 
   getAvailableRegiments(){
     let result:any[] = [];

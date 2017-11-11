@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { TercioBuilderRoutingModule } from './tercio-builder-routing.module';
 
@@ -20,7 +21,8 @@ import { TercioDataService } from "./tercio-data.service";
   imports: [
     CommonModule,
     TercioBuilderRoutingModule,
-    TranslateModule
+    TranslateModule,
+    NgbModule
   ],
   declarations: [
     RosterComponent,

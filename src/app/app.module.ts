@@ -12,6 +12,7 @@ import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 import { AboutModule } from './about/about.module';
 import { TercioBuilderModule } from './tercio-builder/tercio-builder.module';
+import { TooltipComponent } from './controls/tooltip/tooltip.component';
 
 @NgModule({
   imports: [
@@ -26,7 +27,7 @@ import { TercioBuilderModule } from './tercio-builder/tercio-builder.module';
     AboutModule,
     AppRoutingModule
   ],
-  declarations: [AppComponent],
+  declarations: [AppComponent, TooltipComponent],
   providers: [
   ],
   bootstrap: [AppComponent]

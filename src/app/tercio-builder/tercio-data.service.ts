@@ -5,6 +5,7 @@ import * as _ from 'lodash';
 @Injectable()
 export class TercioDataService {
   data: any;
+  glossary: any[];
 
   choseFaction(faction: string){
     //this.faction_data = data.factionData[faction];
@@ -85,13 +86,14 @@ export class TercioDataService {
 
 
   getTraits(){
-    return this.data.traits;
+    return _.sortBy(this.data.traits,(o: any)=>{return o.id});
   }
   getVirtues(){
-    return this.data.virtues;
+    return _.sortBy(this.data.virtues,(o: any)=>{return o.id})
   }
   initData(){
     this.data  = _.cloneDeep(data);
+    this.glossary = _.concat(this.data.traits, this.data.virtues, this.data.rules, this.data.weaponry)
   }
   constructor() {
     this.initData();

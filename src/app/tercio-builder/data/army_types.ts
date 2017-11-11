@@ -38,6 +38,7 @@ export const armyTypeData = [
   {
     id: 'mounted_army',
     title: 'Mounted Army',
+    special:'2 Horse Regiments must be of the same type of cavalry. There must be more Horse regiments than from any other type. Artillery must have Carthorses.',
     commander:{
       cost:{
         2:0,

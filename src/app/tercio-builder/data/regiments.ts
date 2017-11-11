@@ -45,7 +45,7 @@ export const regimentData = [
       virtues:['Elan']
     },
     units_available: ['mtd_arquebus', 'cuirassiers', 'light_horse', 'dragoons', 'modern_cav'],
-    companies_available: ['shot_company'],
+    companies_available: ['shot_company_horse'],
     color: 'green'
   },
   {

@@ -24,11 +24,13 @@ export class UnitComponent implements OnInit {
   stats: any;
   rules: any;
   weaponry: any;
+  glossary: string[];
 
   options_all: any[];
   options_available: any[];
   options_chosen: any[] = [];
 
+  options_open: boolean;
 
   faction: string;
   @Output()
@@ -37,6 +39,8 @@ export class UnitComponent implements OnInit {
   delete_company: EventEmitter<number> = new EventEmitter();
   @Output()
   update_cost: EventEmitter<number> = new EventEmitter();
+  // @Output()
+  // update_glossary: EventEmitter<string[]> = new EventEmitter();
 
   constructor(private dataService: TercioDataService) { }
 
@@ -68,22 +72,23 @@ export class UnitComponent implements OnInit {
     this.stats = _.cloneDeep(this.stats_base);
     this.rules = _.cloneDeep(this.rules_base);
     this.weaponry = _.cloneDeep(this.weaponry_base);
+    this.glossary = _.concat(this.rules_base,this.weaponry_base);
+    this.update_cost.emit();
 
   }
   addOption(option_id: string){
-    //debugger;
     this.options_chosen.push(_.find(this.options_all, (o: any)=>{return o.id == option_id}));
     this.updateWithOptions();
     this.updateAvailableOptions();
     this.update_cost.emit();
-    //debugger;
+    //this.update_glossary.emit();
   }
   removeOption(option_id: string){
     _.remove(this.options_chosen, (o: any)=>{return o.id == option_id});
     this.updateWithOptions();
     this.updateAvailableOptions();
     this.update_cost.emit();
-    //debugger;
+    //this.update_glossary.emit();
   }
   updateWithOptions(){
     this.initValues();
@@ -93,7 +98,8 @@ export class UnitComponent implements OnInit {
       this.rules = _.union(this.rules, option.rules);
       this.rules = _.difference(this.rules, option.rules_loss);
       this.weaponry = _.union(this.weaponry, option.weaponry);
-      this.weaponry = _.difference(this.weaponry, option.weaponry_loss)
+      this.weaponry = _.difference(this.weaponry, option.weaponry_loss);
+      this.glossary = _.concat(this.weaponry, this.rules);
     });
   }
 

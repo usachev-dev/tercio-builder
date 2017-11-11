@@ -98,22 +98,24 @@
   <div class="rules" *ngIf="rules.length>0">
     <span translate>Rules: <span translate class="rule" *ngFor="let rule of rules">{{rule}}</span></span>
   </div>
-  <div class="options" *ngIf="options_chosen.length>0">
-    <span translate>Options chosen:
+  <div class="options">
+    <button class="open_options_button"><span class="fa fa-edit" (click)="options_open=!options_open"></span></button>
+    <span translate>Options:
       <span translate class="option-chosen" *ngFor="let option of options_chosen">
         <button class="remove-option fa fa-trash-o" (click)="removeOption(option.id)"></button>
         <span class="option-chosen-caption">{{option.id}}</span>
       </span>
     </span>
   </div>
-</div>
-<div class="options-block">
-  <button class="option"
-          *ngFor="let option of options_available"
-          (click)="addOption(option.id)">
-    <span class="plus-circle"></span>
-    <span class="option-caption" translate>
+  <div class="options-block" *ngIf="options_open && options_available.length>0">
+    <button class="option"
+            *ngFor="let option of options_available"
+            (click)="addOption(option.id)">
+      <span class="plus-circle"></span>
+      <span class="option-caption" translate>
       {{option.id}} <span class="option-cost">{{option.cost}} <span translate>pts.</span></span>
     </span>
-  </button>
+    </button>
+  </div>
 </div>
+

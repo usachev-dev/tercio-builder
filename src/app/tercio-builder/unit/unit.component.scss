@@ -1,6 +1,6 @@
 @import '../../../main';
 
-$border-style: 1px solid black;
+$border-style: 1px solid rgba(0,0,0,0.2);
 $def-bg: #FAF4B6;
 
 
@@ -118,4 +118,11 @@ $def-bg: #FAF4B6;
 }
 .option-chosen:not(:last-child):after{
   content: ",";
+}
+.open_options_button {
+  margin-right: 0px;
+  opacity: 0.8;
+  &:hover {
+    opacity: 1;
+  }
 }

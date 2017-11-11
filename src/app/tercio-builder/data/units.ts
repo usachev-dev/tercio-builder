@@ -247,6 +247,25 @@ export const unitData = [
     weaponry: ['Arquebus']
   },
   {
+    id: 'shot_company_horse',
+    title: 'Shot Company',
+    base_cost: 55,
+    stats: {
+      speed: 5,
+      melee: 2,
+      shoot: [3, 3],
+      discipline: 3,
+      courage: 3,
+      stamina: 2,
+      infantry: 3,
+      cavalry: 3,
+      salvo: 4,
+      artillery: 4
+    },
+    rules: ['Light', 'Commanded Shot'],
+    weaponry: ['Arquebus']
+  },
+  {
     id: 'pike_company',
     title: 'Pike Company',
     base_cost: 60,

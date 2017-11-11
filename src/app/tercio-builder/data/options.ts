@@ -1,3 +1,69 @@
+const shot_company = {
+  default_options: ['Veteran', 'Large Company', 'Mercenaries','Musketeers','Skirmishers'],
+  options: {
+    'Veteran':{
+      cost:10,
+      stats: {
+        discipline: 4,
+      }
+    },
+    'Large Company':{
+      cost:20,
+      stats: {
+        shoot: [4,4],
+        stamina: 3
+      },
+      rules_loss:['Light'],
+      not_with:['Archers']
+    },
+    'Mercenaries':{
+      cost:-5,
+      rules: ['Mercenaries']
+    },
+    'Musketeers':{
+      cost: 10,
+      weaponry:['Musket'],
+      weaponry_loss:['Arquebus'],
+      not_with:['Archers, large','Archers','Crossbowmen']
+    },
+    'Archers':{
+      cost: 0,
+      weaponry:['Longbow'],
+      weaponry_loss:['Arquebus'],
+      stats:{
+        shoot: [2,2]
+      },
+      not_with: ['Large Company','Archers, large','Musketeers']
+    },
+    'Archers, large':{
+      cost: 0,
+      weaponry:['Longbow'],
+      weaponry_loss:['Arquebus'],
+      stats:{
+        shoot: [3,3]
+      },
+      not_with: ['Archers','Musketeers'],
+      with_option:['Large Company']
+    },
+    'Crossbowmen':{
+      cost: 5,
+      weaponry:['Crossbow'],
+      weaponry_loss:['Arquebus'],
+      not_with:['Archers, large','Archers','Musketeers']
+    },
+    'Brigade':{
+      cost: 0,
+      rules: ['Brigade']
+    },
+    'Skirmishers':{
+      cost: -10,
+      stats:{
+        courage:2
+      },
+      rules:['Skirmishers']
+    }
+  }
+};
 
 export const optionData = {
   tercio: {
@@ -185,72 +251,9 @@ export const optionData = {
     }
   },
 
-  shot_company:{
-    default_options: ['Veteran', 'Large Company', 'Mercenaries','Musketeers','Skirmishers'],
-    options: {
-      'Veteran':{
-        cost:10,
-        stats: {
-          discipline: 4,
-        }
-      },
-      'Large Company':{
-        cost:20,
-        stats: {
-          shoot: [4,4],
-          stamina: 3
-        },
-        rules_loss:['Light'],
-        not_with:['Archers']
-      },
-      'Mercenaries':{
-        cost:-5,
-        rules: ['Mercenaries']
-      },
-      'Musketeers':{
-        cost: 10,
-        weaponry:['Musket'],
-        weaponry_loss:['Arquebus'],
-        not_with:['Archers, large','Archers','Crossbowmen']
-      },
-      'Archers':{
-        cost: 0,
-        weaponry:['Longbow'],
-        weaponry_loss:['Arquebus'],
-        stats:{
-          shoot: [2,2]
-        },
-        not_with: ['Large Company','Archers, large','Musketeers']
-      },
-      'Archers, large':{
-        cost: 0,
-        weaponry:['Longbow'],
-        weaponry_loss:['Arquebus'],
-        stats:{
-          shoot: [3,3]
-        },
-        not_with: ['Archers','Musketeers'],
-        with_option:['Large Company']
-      },
-      'Crossbowmen':{
-        cost: 5,
-        weaponry:['Crossbow'],
-        weaponry_loss:['Arquebus'],
-        not_with:['Archers, large','Archers','Musketeers']
-      },
-      'Brigade':{
-        cost: 0,
-        rules: ['Brigade']
-      },
-      'Skirmishers':{
-        cost: -10,
-        stats:{
-          courage:2
-        },
-        rules:['Skirmishers']
-      }
-    }
-  },
+  shot_company:shot_company,
+
+  shot_company_horse:shot_company,
 
   pike_company:{
     default_options: ['Veteran', 'Mercenaries','+Halberds','+Greatswords','+Swordsmen','Lancers'],

@@ -23,6 +23,7 @@ export class RegimentComponent implements OnInit {
   @ViewChildren(CommanderComponent) commander_query: QueryList<CommanderComponent>;
 
   cost: number;
+  glossary: string[];
 
 
   constructor(private dataService: TercioDataService) { }
@@ -31,6 +32,8 @@ export class RegimentComponent implements OnInit {
   delete_regiment: EventEmitter<number> = new EventEmitter();
   @Output()
   update_cost: EventEmitter<number> = new EventEmitter();
+  @Output()
+  update_glossary: EventEmitter<string[]> = new EventEmitter();
 
   ngOnInit() {
     this.initRegiment();
@@ -117,8 +120,15 @@ export class RegimentComponent implements OnInit {
     setTimeout(() => {
       this.cost = this.units_query.reduce((sum,value)=>sum+value.cost,0);
       this.cost += this.commander_query.reduce((sum,value)=>sum+value.cost,0);
+      this.updateGlossary();
+      this.update_cost.emit();
       }, 0);
-    this.update_cost.emit();
+
+  }
+  updateGlossary(){
+    let result: string[] = [];
+    this.units_query.forEach((item)=>{result = _.concat(result,item.glossary);});
+    this.glossary = result;
   }
   isEmpty(o: any){
     return _.isEmpty(o);

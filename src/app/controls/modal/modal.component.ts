@@ -14,7 +14,7 @@ export class ModalComponent implements OnInit, OnDestroy {
   constructor(private renderer: Renderer2) {
     let scrollBarWidth = window.innerWidth - document.body.offsetWidth;
     this.renderer.addClass(document.body, 'modal-open');
-    this.renderer.setStyle(document.body, 'margin-right', scrollBarWidth);
+    this.renderer.setStyle(document.body, 'margin-right', scrollBarWidth+'px');
 
   }
 

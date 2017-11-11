@@ -14,6 +14,9 @@
     </div>
     <div class="limit">{{cost}} <span translate>pts.</span></div>
   </div>
+  <div class="special-block" *ngIf="armyTypeData.special">
+    <strong>Special: </strong><span translate>{{armyTypeData.special}}</span>
+  </div>
 
   <app-commander
     *ngIf="!isEmpty(armyTypeData.commander) && (armyTypeData.commander.max_rank>=0)"
