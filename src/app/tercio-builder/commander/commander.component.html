@@ -2,20 +2,20 @@
   <strong  style="margin-right: 10px;">Commander Rank:</strong>
   <button
     class="rank-button"
-    [disabled]="rank<=commander_data.min_rank"
-    (click)="rankReduce()"
+    [disabled]="commander.rank<=commander.commander_data.min_rank"
+    (click)="commander.rankReduce()"
   ><span class="plus-circle  minus"></span>
   </button>
-  <strong>{{rank}}</strong>
+  <strong>{{commander.rank}}</strong>
   <button
     class="rank-button"
-    [disabled]="rank>=commander_data.max_rank"
-    (click)="rankIncrease()"
+    [disabled]="commander.rank>=commander.commander_data.max_rank"
+    (click)="commander.rankIncrease()"
   ><span class="plus-circle"></span>
   </button>
-  <span class="cost" style="margin-left: 10px;">{{cost}} <span translate>pts.</span></span>
+  <span class="cost" style="margin-left: 10px;">{{commander.cost}} <span translate>pts.</span></span>
 
-  <table style="width:100%" class="trait-block" *ngIf="rank>0">
+  <table style="width:100%" class="trait-block" *ngIf="commander.rank>0">
     <tr>
       <th rowspan="2" class="button-block noprint">
         <button class="edit-button" (click)="openModal()"><span class="fa fa-edit"></span></button>
@@ -25,9 +25,9 @@
           <strong>Virtues: </strong>
           <span
             class="has-error"
-            *ngIf="virtues.length!==number_of_virtues[rank]"
-          > pick {{number_of_virtues[rank]}}</span>
-          <span class="virtue" *ngFor="let virtue of virtues">{{virtue.id}}</span>
+            *ngIf="commander.virtues.length!==commander.number_of_virtues[commander.rank]"
+          > pick {{commander.number_of_virtues[commander.rank]}}</span>
+          <span class="virtue" *ngFor="let virtue of commander.virtues">{{virtue.id}}</span>
         </div>
       </td>
     </tr>
@@ -37,9 +37,9 @@
           <strong>Traits: </strong>
           <span
             class="has-error"
-            *ngIf="traits.length!==number_of_traits[rank]"
-          > pick {{number_of_traits[rank]}}</span>
-          <span class="trait" *ngFor="let trait of traits">{{trait.id}}</span>
+            *ngIf="commander.traits.length!==commander.number_of_traits[commander.rank]"
+          > pick {{commander.number_of_traits[commander.rank]}}</span>
+          <span class="trait" *ngFor="let trait of commander.traits">{{trait.id}}</span>
         </div>
       </td>
     </tr>
@@ -56,18 +56,18 @@
         <span class="fa fa-search"></span>
         <input
           type="text"
-          (input)="filter_value=$event.target.value;updateTraitsAvailable();updateVirtuesAvailable();"
+          (input)="commander.filter_value=$event.target.value; commander.updateTraitsAvailable(); commander.updateVirtuesAvailable();"
         >
       </div>
       <div class="virtues">
         <h5>Virtues</h5>
         <div class="virtue"
-             *ngFor="let virtue of virtues_available"
+             *ngFor="let virtue of commander.virtues_available"
              [class.selected]="chosen_item===virtue"
         >
           <button
-            [disabled]="virtues.length >= number_of_virtues[rank]"
-            (click)="addVirtue(virtue)"
+            [disabled]="commander.virtues.length >= commander.number_of_virtues[commander.rank]"
+            (click)="commander.addVirtue(virtue)"
           >
             <span class="plus-circle"></span>
           </button>
@@ -83,12 +83,12 @@
       <div class="traits">
         <h5>Traits</h5>
         <div class="trait"
-             *ngFor="let trait of traits_available"
+             *ngFor="let trait of commander.traits_available"
              [class.selected]="chosen_item===trait"
         >
           <button
-            [disabled]="traits.length >= number_of_traits[rank]"
-            (click)="addTrait(trait);"
+            [disabled]="commander.traits.length >= commander.number_of_traits[commander.rank]"
+            (click)="commander.addTrait(trait);"
           >
             <span class="plus-circle"></span></button>
           <span
@@ -103,13 +103,13 @@
     </div>
     <div class="panel-right">
       <div class="options-chosen">
-        <h5>Virtues ({{number_of_virtues[rank]}})</h5>
+        <h5>Virtues ({{commander.number_of_virtues[commander.rank]}})</h5>
         <div
           class="virtue"
-          *ngFor="let virtue of virtues"
+          *ngFor="let virtue of commander.virtues"
           [class.selected]="chosen_item===virtue"
         >
-          <button class="remove-option fa fa-trash-o" (click)="removeVirtue(virtue)"></button>
+          <button class="remove-option fa fa-trash-o" (click)="commander.removeVirtue(virtue)"></button>
           <span
             class="title"
             translate
@@ -117,13 +117,13 @@
           >{{virtue.id}}
           </span>
         </div>
-        <h5>Traits ({{number_of_traits[rank]}})</h5>
+        <h5>Traits ({{commander.number_of_traits[commander.rank]}})</h5>
         <div
           class="trait"
-          *ngFor="let trait of traits"
+          *ngFor="let trait of commander.traits"
           [class.selected]="chosen_item===trait"
         >
-          <button class="remove-option fa fa-trash-o" (click)="removeTrait(trait)"></button>
+          <button class="remove-option fa fa-trash-o" (click)="commander.removeTrait(trait)"></button>
           <span
             class="title"
             translate

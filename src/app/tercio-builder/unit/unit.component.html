@@ -1,7 +1,106 @@
 <div class="unit-container">
-  <div class="stats-block">
+  <table class="stats-block-mobile noprint">
+    <tr>
+      <td colspan="6" class="title">
+        <span translate>{{unit.unit_data.title}}</span>
+        <button class="delete" (click)="deleteUnit()">
+          <span class="fa fa-trash-o"></span>
+        </button>
+      </td>
+    </tr>
+    <tr class="b-top">
+      <td class="stat">
+        <div class="stat-name">
+          <img src="assets/icons/stats/speed.svg" alt="Speed" title="Speed">
+        </div>
+        <div class="stat-value">
+          {{unit.stats.speed}}
+        </div>
+      </td>
+      <td class="stat">
+        <div class="stat-name">
+          <img src="assets/icons/stats/melee.svg" alt="Melee" title="Melee">
+        </div>
+        <div class="stat-value">
+          {{unit.stats.melee}}
+        </div>
+      </td>
+      <td class="stat">
+        <div class="stat-name">
+          <img src="assets/icons/stats/shoot.svg" alt="Shoot" title="Shoot">
+        </div>
+        <div class="stat-value">
+          {{unit.stats.shoot[0]}}<span *ngIf="unit.stats.shoot[0]!=unit.stats.shoot[1]">/{{unit.stats.shoot[1]}}</span>
+        </div>
+      </td>
+      <td class="stat">
+        <div class="stat-name">
+          <img src="assets/icons/stats/disc.svg" alt="Discipline" title="Discipline">
+        </div>
+        <div class="stat-value">
+          {{unit.stats.discipline}}
+        </div>
+      </td>
+      <td class="stat b-bot">
+        <div class="stat-name">
+          <img src="assets/icons/stats/courage.svg" alt="Courage" title="Courage">
+        </div>
+        <div class="stat-value">
+          {{unit.stats.courage}}
+        </div>
+      </td>
+      <td class="stat b-bot">
+        <div class="stat-name">
+          <img src="assets/icons/stats/stamina.svg" alt="Stamina" title="Stamina">
+        </div>
+        <div class="stat-value">
+          {{unit.stats.stamina}}
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="stat def">
+        <div class="stat-name">
+          <img src="assets/icons/stats/inf.svg" alt="Defence from Infantry" title="Defence from Infantry">
+        </div>
+        <div class="stat-value">
+          {{unit.stats.infantry}}
+        </div>
+      </td>
+      <td class="stat def">
+        <div class="stat-name">
+          <img src="assets/icons/stats/cav.svg" alt="Defence from Cavalry" title="Defence from Cavalry">
+        </div>
+        <div class="stat-value">
+          {{unit.stats.cavalry}}
+        </div>
+      </td>
+      <td class="stat def">
+        <div class="stat-name">
+          <img src="assets/icons/stats/salvo.svg" alt="Defence from Salvo" title="Defence from Salvo">
+        </div>
+        <div class="stat-value">
+          {{unit.stats.salvo}}
+        </div>
+      </td>
+      <td class="stat def">
+        <div class="stat-name">
+          <img src="assets/icons/stats/art.svg" alt="Defence from Artillery" title="Defence from Artillery">
+        </div>
+        <div class="stat-value">
+          {{unit.stats.artillery}}
+        </div>
+      </td>
+      <td class="stat" colspan="2">
+        {{unit.cost}} <span translate>pts.</span>
+      </td>
+    </tr>
+  </table>
+
+
+  <div class="stats-block-big">
     <div class="title">
-      <span translate>{{data.title}}</span>
+      <span translate>{{unit.unit_data.title}}</span>
       <button class="delete" (click)="deleteUnit()">
         <span class="fa fa-trash-o"></span>
       </button>
@@ -11,7 +110,7 @@
         <img src="assets/icons/stats/speed.svg" alt="Speed" title="Speed">
       </div>
       <div class="stat-value">
-        {{stats.speed}}
+        {{unit.stats.speed}}
       </div>
     </div>
     <div class="stat">
@@ -19,7 +118,7 @@
         <img src="assets/icons/stats/melee.svg" alt="Melee" title="Melee">
       </div>
       <div class="stat-value">
-        {{stats.melee}}
+        {{unit.stats.melee}}
       </div>
     </div>
     <div class="stat">
@@ -27,7 +126,7 @@
         <img src="assets/icons/stats/shoot.svg" alt="Shoot" title="Shoot">
       </div>
       <div class="stat-value">
-        {{stats.shoot[0]}}<span *ngIf="stats.shoot[0]!=stats.shoot[1]">/{{stats.shoot[1]}}</span>
+        {{unit.stats.shoot[0]}}<span *ngIf="unit.stats.shoot[0]!=unit.stats.shoot[1]">/{{unit.stats.shoot[1]}}</span>
       </div>
     </div>
     <div class="stat">
@@ -35,7 +134,7 @@
         <img src="assets/icons/stats/disc.svg" alt="Discipline" title="Discipline">
       </div>
       <div class="stat-value">
-        {{stats.discipline}}
+        {{unit.stats.discipline}}
       </div>
     </div>
     <div class="stat">
@@ -43,7 +142,7 @@
         <img src="assets/icons/stats/courage.svg" alt="Courage" title="Courage">
       </div>
       <div class="stat-value">
-        {{stats.courage}}
+        {{unit.stats.courage}}
       </div>
     </div>
     <div class="stat">
@@ -51,7 +150,7 @@
         <img src="assets/icons/stats/stamina.svg" alt="Stamina" title="Stamina">
       </div>
       <div class="stat-value">
-        {{stats.stamina}}
+        {{unit.stats.stamina}}
       </div>
     </div>
     <div class="stat def">
@@ -59,7 +158,7 @@
         <img src="assets/icons/stats/inf.svg" alt="Defence from Infantry" title="Defence from Infantry">
       </div>
       <div class="stat-value">
-        {{stats.infantry}}
+        {{unit.stats.infantry}}
       </div>
     </div>
     <div class="stat def">
@@ -67,7 +166,7 @@
         <img src="assets/icons/stats/cav.svg" alt="Defence from Cavalry" title="Defence from Cavalry">
       </div>
       <div class="stat-value">
-        {{stats.cavalry}}
+        {{unit.stats.cavalry}}
       </div>
     </div>
     <div class="stat def">
@@ -75,7 +174,7 @@
         <img src="assets/icons/stats/salvo.svg" alt="Defence from Salvo" title="Defence from Salvo">
       </div>
       <div class="stat-value">
-        {{stats.salvo}}
+        {{unit.stats.salvo}}
       </div>
     </div>
     <div class="stat def">
@@ -83,34 +182,34 @@
         <img src="assets/icons/stats/art.svg" alt="Defence from Artillery" title="Defence from Artillery">
       </div>
       <div class="stat-value">
-        {{stats.artillery}}
+        {{unit.stats.artillery}}
       </div>
     </div>
     <div class="stat">
-      {{cost}} <span translate>pts.</span>
+      {{unit.cost}} <span translate>pts.</span>
     </div>
   </div>
 </div>
-<div class="rules-block" *ngIf="weaponry.length>0 || rules.length>0 || options_chosen.length>0">
-  <div class="weapons" *ngIf="weaponry.length>0">
-    <span translate>Weaponry: <span translate class="weapon" *ngFor="let weapon of weaponry">{{weapon}}</span></span>
+<div class="rules-block" *ngIf="unit.weaponry.length>0 || unit.rules.length>0 || unit.options_chosen.length>0">
+  <div class="weapons" *ngIf="unit.weaponry.length>0">
+    <span translate>Weaponry: <span translate class="weapon" *ngFor="let weapon of unit.weaponry">{{weapon}}</span></span>
   </div>
-  <div class="rules" *ngIf="rules.length>0">
-    <span translate>Rules: <span translate class="rule" *ngFor="let rule of rules">{{rule}}</span></span>
+  <div class="rules" *ngIf="unit.rules.length>0">
+    <span translate>Rules: <span translate class="rule" *ngFor="let rule of unit.rules">{{rule}}</span></span>
   </div>
   <div class="options">
     <button class="open_options_button"><span class="fa fa-edit" (click)="options_open=!options_open"></span></button>
     <span translate>Options:
-      <span translate class="option-chosen" *ngFor="let option of options_chosen">
-        <button class="remove-option fa fa-trash-o" (click)="removeOption(option.id)"></button>
+      <span translate class="option-chosen" *ngFor="let option of unit.options_chosen">
+        <button class="remove-option fa fa-trash-o" (click)="unit.removeOption(option.id)"></button>
         <span class="option-chosen-caption">{{option.id}}</span>
       </span>
     </span>
   </div>
-  <div class="options-block" *ngIf="options_open && options_available.length>0">
+  <div class="options-block" *ngIf="options_open && unit.options_available.length>0">
     <button class="option"
-            *ngFor="let option of options_available"
-            (click)="addOption(option.id)">
+            *ngFor="let option of unit.options_available"
+            (click)="unit.addOption(option.id)">
       <span class="plus-circle"></span>
       <span class="option-caption" translate>
       {{option.id}} <span class="option-cost">{{option.cost}} <span translate>pts.</span></span>

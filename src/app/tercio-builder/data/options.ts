@@ -159,6 +159,8 @@ export const optionData = {
         stats: {
           shoot: [4,4]
         },
+        weaponry: ['Musket'],
+        weaponry_loss:['Arquebus/Musket'],
         not_with:['Musket only'],
         with_option: ['Modernised']
       },
@@ -167,6 +169,8 @@ export const optionData = {
         stats: {
           shoot: [3,3]
         },
+        weaponry: ['Musket'],
+        weaponry_loss:['Arquebus/Musket'],
         not_with:['Modernised', 'Musket only, Modernised']
       },
     }

@@ -12,6 +12,10 @@
           <i class="fa fa-home"></i>
           <span translate>New roster</span>
         </a>
+        <a class="nav-item nav-link text-uppercase" *ngIf="saved.length>0" (click)="toggleLoadModal()">
+          <i class="fa fa-folder-open"></i>
+          <span translate>Load Roster</span>
+        </a>
         <a class="nav-item nav-link text-uppercase" routerLink="/about" routerLinkActive="router-link_active">
           <i class="fa fa-question-circle"></i>
           <span translate>About</span>
@@ -30,3 +34,5 @@
     </div>
   </nav>
 </header>
+<app-load-modal [open]="load_modal_open" (close_modal)="toggleLoadModal()">
+</app-load-modal>

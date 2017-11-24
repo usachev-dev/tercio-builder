@@ -4,12 +4,15 @@ import { RouterModule } from '@angular/router';
 import { HttpModule, Http, XHRBackend, ConnectionBackend, RequestOptions } from '@angular/http';
 import { TranslateModule } from '@ngx-translate/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { SharedModule } from "../shared/shared.module";
 
 import { ShellComponent } from './shell/shell.component';
 import { HeaderComponent } from './shell/header/header.component';
 import { I18nService } from './i18n.service';
+import { SaveService } from "./save.service";
 import { HttpService } from './http/http.service';
 import { HttpCacheService } from './http/http-cache.service';
+
 
 export function createHttpService(backend: ConnectionBackend,
                                   defaultOptions: RequestOptions,
@@ -23,7 +26,8 @@ export function createHttpService(backend: ConnectionBackend,
     HttpModule,
     TranslateModule,
     NgbModule,
-    RouterModule
+    RouterModule,
+    SharedModule
   ],
   declarations: [
     HeaderComponent,

@@ -1,9 +1,13 @@
-import { Component, OnInit, ViewChildren, ViewChild, QueryList } from '@angular/core';
-import { RegimentComponent } from '../regiment/regiment.component';
-import { CommanderComponent } from '../commander/commander.component';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Router } from "@angular/router";
 import { TercioDataService } from "../tercio-data.service";
+import * as moment from 'moment';
 import * as _ from 'lodash';
+
+import { Roster } from '../domain_model/roster'
+import { SaveService } from "../../core/save.service";
+
 @Component({
   selector: 'app-roster',
   templateUrl: './roster.component.html',
@@ -11,105 +15,76 @@ import * as _ from 'lodash';
 })
 export class RosterComponent implements OnInit {
 
-  regiments: any[];
   faction: string;
   army_type: string;
-  armyTypeData: any;
-  regimentData: any;
-  availableRegiments: any[];
 
-  cost:number = 0;
+  roster: Roster;
+
+  load_modal_open: boolean = false;
+  checkmark_show: boolean = false;
+  save_warning_show = false;
+
+  get saved(): any {
+    return this.saveService.saved;
+  }
   glossary: string[] = [];
 
-  @ViewChildren(RegimentComponent) regiments_query: QueryList<RegimentComponent>;
-  @ViewChild('cnc') cnc: CommanderComponent;
 
-  updateCost(){
-    setTimeout(() => {
-      this.cost = this.regiments_query.reduce((sum,value)=>sum+value.cost,0);
-      this.cost += this.cnc.cost;
-      this.updateGlossary();
-      }, 0);
-  }
-  updateGlossary(){
-    let list: string[] = [], result: any[];
-    this.regiments_query.forEach((item)=>{list = _.concat(list,item.glossary);});
-    list=_.sortBy(_.uniq(list), (o: string)=>{return o});
-  }
-
-  getAvailableRegiments(){
-    let result:any[] = [];
-    _.each(this.regimentData, (regiment_type: any)=>{
-      let limit = _.find(this.armyTypeData.regiments,(o: any)=>{return o.id===regiment_type.id}).max;
-      if(this.getRegimentNumber(regiment_type.id)<limit){
-        result.push(regiment_type);
-      }
-    });
-    return result;
-  }
-  addRegiment(regiment_id: string){
-    let regiment = _.find(this.regimentData, (o: any)=>{return o.id === regiment_id});
-    this.regiments.push(regiment);
-    this.availableRegiments = this.getAvailableRegiments();
-  }
-  getRegimentById(id: string){
-    return _.find(this.regimentData,(o: any)=>{return o.id === id})
-  }
-  deleteRegiment(index: number): void{
-    this.regiments.splice(index,1);
-    this.updateCost();
-  }
-
-  getRegimentNumber(type?: string): number{
-    if (type){
-      let result = 0;
-      _.each(this.regiments, (o)=>{
-        if (o.id === type){
-          result++;
-        }
-      });
-      return result;
-    } else {
-      return this.regiments.length;
-    }
-  }
-  getFactionTitle() {
-    return this.dataService.getFactionById(this.faction).title;
-  }
-  getArmyTypeTitle() {
-    return this.dataService.getArmyTypeById(this.army_type).title;
-  }
   constructor(
     private route: ActivatedRoute,
-    private dataService: TercioDataService) {
-
+    private dataService: TercioDataService,
+    private saveService: SaveService,
+    private router: Router,
+    ) {
   }
 
   ngOnInit() {
     this.dataService.initData();
-    this.route.params.subscribe(params => {
-      this.faction = params['faction'];
-      this.army_type = params['army_type'];
-    });
-    this.armyTypeData = this.dataService.getArmyTypeById(this.army_type);
-    this.regimentData = this.dataService.getRegimentData(this.faction);
-    this.regiments = [];
-    this.availableRegiments = this.getAvailableRegiments();
-    this.initRoster();
+    if (this.route.snapshot.data.loading) {
+      let index = 0;
+      this.route.params.subscribe(params => {
+        index = params['roster_index'];
+        this.loadRoster(index);
+        this.load_modal_open = false;
+      });
+    } else {
+      this.route.params.subscribe(params => {
+        this.faction = params['faction'];
+        this.army_type = params['army_type'];
+      });
+      this.roster = new Roster(this.dataService, this.faction, this.army_type);
+    }
   }
-  ngAfterViewInit() {
-    this.updateCost();
+
+  saveRoster(){
+    if (this.saved.length > 10) {
+      this.save_warning_show = true;
+      setTimeout(()=>{
+        this.save_warning_show = false;
+      }, 5000)
+    } else {
+      this.saveService.saveRoster(this.roster.saveRoster());
+      this.checkmark_show = true;
+      setTimeout(()=>{
+        this.checkmark_show = false;
+      }, 2000)
+    }
   }
-  initRoster(){
-    _.each(this.armyTypeData.regiments, (regiment_type: any)=>{
-      for(let i=0;i<regiment_type.min; i++){
-        let regiment = _.find(this.regimentData, (o: any)=>{return o.id === regiment_type.id});
-        if(regiment){
-          this.regiments.push(regiment);
-        }
-      }
-    });
+
+  loadRoster(index: number){
+    let saved_roster = this.saveService.loadRoster(index);
+    if (!_.isEmpty(saved_roster) && !_.isUndefined(saved_roster) && !_.isNull(saved_roster)){
+      this.roster = new Roster(this.dataService, saved_roster.faction, saved_roster.army_type, saved_roster );
+      this.toggleLoadModal();
+    } else {
+      this.router.navigate(['/']);
+    }
   }
+
+  toggleLoadModal(){
+    this.load_modal_open=!this.load_modal_open;
+  }
+
   isEmpty(o: any){
     return _.isEmpty(o);
   }

@@ -1,53 +1,48 @@
-<div [class]="'regiment_container ' + regiment_data.color">
-  <h2 class="title">{{regiment_data.title}}</h2>
+<div [class]="'regiment_container ' + regiment.regiment_data.color">
+  <h2 class="title">{{regiment.regiment_data.title}}</h2>
   <button class="delete" (click)="deleteRegiment()"><span class="fa fa-trash-o"></span></button>
-  <div class="cost">{{cost}} <span translate>pts.</span></div>
+  <div class="cost">{{regiment.cost}} <span translate>pts.</span></div>
   <div class="limits-block">
-    <div [class]="'limit ' + (units.length<regiment_data.min_units ? 'has-error' : '')">
+    <div [class]="'limit ' + (regiment.units.length<regiment.regiment_data.min_units ? 'has-error' : '')">
       <span translate>Units: </span>
-      {{units.length}}/{{regiment_data.max_units}}
-      <span *ngIf="units.length<regiment_data.min_units">({{regiment_data.min_units}}+)</span>
+      {{regiment.units.length}}/{{regiment.regiment_data.max_units}}
+      <span *ngIf="regiment.units.length<regiment.regiment_data.min_units">({{regiment.regiment_data.min_units}}+)</span>
     </div>
-    <div [class]="'limit ' + (companies.length>getMaxCompanies() ? 'has-error' : '')">
+    <div [class]="'limit ' + (regiment.companies.length>regiment.getMaxCompanies() ? 'has-error' : '')">
       <span translate>Companies: </span>
-      {{companies.length}}/{{getMaxCompanies()}}
+      {{regiment.companies.length}}/{{regiment.getMaxCompanies()}}
     </div>
   </div>
 
-  <app-commander *ngIf="!isEmpty(regiment_data.commander)"
-                 [commander_data]="regiment_data.commander"
-                 (update_cost)="updateCost()"
+  <app-commander *ngIf="!isEmpty(regiment.regiment_data.commander)"
+                 [commander]="regiment.commander"
   ></app-commander>
-  <app-unit *ngFor="let unit of units; let i = index"
-            [unit_type]="unit"
-            [faction]="faction"
-            (delete_unit)="deleteUnit(i)"
-            (update_cost)="updateCost()"
+  <app-unit *ngFor="let unit of regiment.units; let i = index"
+            [unit]="unit"
+            (delete_unit)="regiment.deleteUnit(i)"
   ></app-unit>
 
   <app-add-button
-    *ngIf="units_available.length>0"
-    [items]="units_available"
+    *ngIf="regiment.units_available.length>0"
+    [items]="regiment.units_available"
     [caption]="'Add unit'"
-    [color]="regiment_data.color"
+    [color]="regiment.regiment_data.color"
     [location]="'regiment'"
-    (add_item)="addUnit($event)">
+    (add_item)="regiment.addUnit($event)">
   </app-add-button>
 
-  <app-unit *ngFor="let unit of companies; let i = index"
-            [unit_type]="unit"
-            [is_company] = "true"
-            [faction]="faction"
-            (delete_company)="deleteCompany(i)"
+  <app-unit *ngFor="let unit of regiment.companies; let i = index"
+            [unit]="unit"
+            (delete_company)="regiment.deleteCompany(i)"
   ></app-unit>
 
   <app-add-button
-    *ngIf="companies_available.length>0"
-    [items]="companies_available"
+    *ngIf="regiment.companies_available.length>0"
+    [items]="regiment.companies_available"
     [caption]="'Add company'"
     [color]="'yellow'"
     [location]="'regiment'"
-    (add_item)="addCompany($event)">
+    (add_item)="regiment.addCompany($event)">
   </app-add-button>
 
 </div>

@@ -8,10 +8,13 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
+import { SaveService } from "./core/save.service";
+
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 import { AboutModule } from './about/about.module';
 import { TercioBuilderModule } from './tercio-builder/tercio-builder.module';
+
 
 @NgModule({
   imports: [
@@ -26,8 +29,11 @@ import { TercioBuilderModule } from './tercio-builder/tercio-builder.module';
     AboutModule,
     AppRoutingModule
   ],
-  declarations: [AppComponent],
+  declarations: [
+    AppComponent
+  ],
   providers: [
+    SaveService
   ],
   bootstrap: [AppComponent]
 })

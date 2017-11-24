@@ -10,11 +10,12 @@ import { CommanderComponent } from './commander/commander.component';
 import { RegimentComponent } from './regiment/regiment.component';
 import { UnitComponent } from './unit/unit.component';
 import { FactionPickerComponent } from './faction-picker/faction-picker.component';
-import { AddButtonComponent } from '../controls/add-button/add-button.component';
-import { ModalComponent } from '../controls/modal/modal.component';
-
+import { AddButtonComponent } from '../shared/add-button/add-button.component';
+import { ModalComponent } from '../shared/modal/modal.component';
 
 import { TercioDataService } from "./tercio-data.service";
+import { LoadModalComponent } from '../shared/load-modal/load-modal.component';
+import {SharedModule} from "../shared/shared.module";
 
 
 @NgModule({
@@ -22,16 +23,15 @@ import { TercioDataService } from "./tercio-data.service";
     CommonModule,
     TercioBuilderRoutingModule,
     TranslateModule,
-    NgbModule
+    NgbModule,
+    SharedModule
   ],
   declarations: [
     RosterComponent,
     CommanderComponent,
     RegimentComponent,
     UnitComponent,
-    FactionPickerComponent,
-    AddButtonComponent,
-    ModalComponent
+    FactionPickerComponent
   ],
   providers:[TercioDataService]
 })

@@ -8,7 +8,9 @@ import {RosterComponent} from "./roster/roster.component";
 
 const routes: Routes = Route.withShell([
   { path: '', component: FactionPickerComponent },
-  { path: ':faction/:army_type', component: RosterComponent }
+  { path: 'roster/load/:roster_index', component: RosterComponent, data:{loading: true} },
+  { path: 'roster/:faction/:army_type', component: RosterComponent }
+
 ]);
 
 @NgModule({

@@ -1,0 +1,17 @@
+<app-modal
+  [modal_class]="'load-modal'"
+  *ngIf="open"
+  (close_modal)="closeMe()"
+>
+  <h3>Load Roster</h3>
+  <div class="saved-roster"
+       *ngFor="let saved of saved; let index=index;"
+       (click)="loadRoster(index)"
+  >
+    <button class="delete" (click)="deleteSavedRoster(index)"><span class="fa fa-trash-o"></span></button>
+    <span class="faction" translate>{{saved.faction_title}},&nbsp;</span>
+    <span class="army-type">{{saved.army_type_title}}</span>
+    <span class="cost">{{saved.cost}} pts.</span>
+    <span class="date">{{parseDate(saved.date)}}</span>
+  </div>
+</app-modal>

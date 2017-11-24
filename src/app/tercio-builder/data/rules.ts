@@ -29,7 +29,7 @@ export const rules:any = [
   },
   {
     id:'Commanded Shot',
-    description:'A unit with this rule which is charged can be defended by a Horse unit of the same regiment, provided that the Horse unit has not been activated yet, regardless of the Order Card that it has. '
+    description:'A unit with this rule which is charged can be defended by a Horse unit of the same regiment, provided that the Horse unit has not been activated yet, regardless of the Order Card that it has. This Horse unit will charge to intercept the enemy, choosing a path to protect the shot unit. If the Horse unit is defeated. the enemy may continue, if it so chooses, charging towards the Commanded Shot. As the intercepting Horse unit is reacting it looses its Order Card. In order to benefit from Increased Melee value, the intercepting Horse unit is required to have had the Assault Order Card assigned to it at the start of the turn.'
   },
   {
     id:'Squares',
