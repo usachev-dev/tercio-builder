@@ -80,10 +80,15 @@
   display: inline-block;
   float: right;
   height: 100%;
+  .options-chosen {
+    height: 35%;
+  }
+  .description {
+    height: calc(65% - 25px);
+    overflow: auto;
+  }
 }
-.options-chosen {
-  height: 50%;
-}
+
 
 h5 {
   font-weight: bold;

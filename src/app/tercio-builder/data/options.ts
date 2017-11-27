@@ -659,7 +659,8 @@ export const optionData = {
         stats: {
           discipline: 4,
         },
-        not_with:['New Model Army','Reinforced']
+        rules:['Brigade'],
+        not_with:['New Model Army']
       },
       'New Model Army':{
         cost:30,
@@ -675,7 +676,7 @@ export const optionData = {
         stats: {
           shoot: [5,5]
         },
-        not_with:['Veterans','New Model Army']
+        not_with:['New Model Army']
       }
     }
   },
