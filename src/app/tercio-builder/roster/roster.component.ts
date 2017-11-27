@@ -55,6 +55,11 @@ export class RosterComponent implements OnInit {
       this.roster = new Roster(this.dataService, this.faction, this.army_type);
     }
   }
+  get limits():any {
+    return _.filter(this.roster.armyTypeData.regiments,(o: any)=>{
+      return !o.instead_of;
+    })
+  }
 
   saveRoster(){
     if (this.saved.length > 10) {

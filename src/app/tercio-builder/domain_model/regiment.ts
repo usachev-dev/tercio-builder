@@ -10,7 +10,9 @@ export class Regiment {
   get cost(): number {
     let result;
     result = this.units.reduce((sum, value) => sum + value.cost, 0);
-    result += this.commander.cost;
+    if (this.commander && this.commander.cost) {
+      result += this.commander.cost;
+    }
     return result;
   }
 
@@ -39,9 +41,28 @@ export class Regiment {
     if ( saved_regiment ) {
       this.load(saved_regiment);
     } else {
-      this.commander = new Commander(data, regiment_data.commander);
+      if (!_.isEmpty(regiment_data.commander) &&
+        !_.isNull(regiment_data.commander) &&
+        !_.isUndefined(regiment_data.commander)){
+        this.commander = new Commander(data, regiment_data.commander);
+      }
       this.updateAvailableUnits();
       this.updateAvailableCompanies();
+    }
+  }
+
+  checkForAdditionalUnits(): boolean {
+    let main: number = 0;
+    if (!_.isArray(this.regiment_data.additional_units)){
+      return false;
+    } else {
+      //посчитаем основные юниты в регименте
+      _.each(this.units, (unit)=>{
+        if (_.includes(this.regiment_data.units_available, unit.unit_data.id)){
+          main++;
+        }
+      });
+      return ((this.units.length - main)<main);
     }
   }
 
@@ -53,18 +74,24 @@ export class Regiment {
         break;
       case (this.regiment_data.same_unit!==false && this.units.length > 0):
         temp = [this.units[0].unit_data.id];
+        if (this.checkForAdditionalUnits()){
+          temp = _.concat(temp, this.regiment_data.additional_units);
+        }
         break;
-      case (this.regiment_data.same_unit===true && this.units.length < this.regiment_data.max_units):
+      case (this.regiment_data.same_unit===false && this.units.length < this.regiment_data.max_units):
         temp = this.regiment_data.units_available;
+        if (this.checkForAdditionalUnits()){
+          temp = _.concat(temp, this.regiment_data.additional_units);
+        }
         break;
       case (this.units.length === 0):
         temp = this.regiment_data.units_available;
         break;
     }
     _.each(temp, _.bind((id: string)=>{
+      //debugger;
       result.push ({id: id, title: this.data.getUnitById(id).title});
     }, this));
-
     this.units_available = result;
 
   }
@@ -112,14 +139,16 @@ export class Regiment {
     return this;
   }
   load(saved_regiment: any){
-    this.commander = new Commander (this.data, this.regiment_data.commander, saved_regiment.commander);
+    if (saved_regiment.commander){
+      this.commander = new Commander (this.data, this.regiment_data.commander, saved_regiment.commander);
+    }
     _.each(saved_regiment.units, (unit: any)=>{
       this.units.push(
         new Unit(this.data, this.faction, unit.unit_data.id, unit.is_company, unit)
       )
     });
     _.each(saved_regiment.companies, (unit: any)=>{
-      this.units.push(
+      this.companies.push(
         new Unit(this.data, this.faction, unit.unit_data.id, unit.is_company, unit)
       )
     });

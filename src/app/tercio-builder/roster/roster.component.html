@@ -16,7 +16,8 @@
   </app-modal>
   <div class="limits-block">
     <div [class]="'limit '+(roster.getRegimentNumber(regiment_type.id)<regiment_type.min ? 'has-error' : '')"
-         *ngFor="let regiment_type of roster.armyTypeData.regiments">
+         *ngFor="let regiment_type of limits"
+    >
       <span translate>
         {{roster.getRegimentById(regiment_type.id).title}}:
       </span>

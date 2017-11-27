@@ -34,6 +34,9 @@ export const factionData = [
       },
       reformed: {
         options: ['+Greatswords']
+      },
+      musketeer_corps: {
+        options: ['New Model Army']
       }
     }
   },
@@ -47,6 +50,7 @@ export const factionData = [
     regiment_modifiers: {
       foot_regiment: {
         units_available: ['modern'],
+        additional_units: ['musketeer_corps']
       }
     },
     unit_modifiers: {
@@ -55,6 +59,9 @@ export const factionData = [
       },
       modern_cav:{
         options:['Determined']
+      },
+      musketeer_corps:{
+        options:['Reinforced']
       }
     }
   },
@@ -68,6 +75,16 @@ export const factionData = [
     regiment_modifiers: {
       foot_regiment: {
         units_available: ['tercio', 'classic_sqd'],
+      },
+      horse_regiment: {
+        units_available: ['lisow'],
+      },
+      balkan_horse_regiment: {
+        instead_of:'horse_regiment'
+      },
+      east_horse_regiment: {
+        units_available: ['cossack'],
+        instead_of:'horse_regiment'
       }
     },
     unit_modifiers: {
@@ -95,6 +112,13 @@ export const factionData = [
     regiment_modifiers: {
       foot_regiment: {
         units_available: ['classic_sqd', 'reformed'],
+      },
+      horse_regiment: {
+        units_available: ['lisow'],
+      },
+      east_horse_regiment: {
+        units_available: ['tartar'],
+        instead_of: 'horse_regiment'
       }
     },
     unit_modifiers: {
@@ -149,6 +173,7 @@ export const factionData = [
     regiment_modifiers: {
       foot_regiment: {
         units_available: ['reformed'],
+        additional_units: ['musketeer_corps']
       }
     },
     unit_modifiers: {
@@ -157,6 +182,9 @@ export const factionData = [
       },
       modern_cav:{
         options:['Gendarmes']
+      },
+      musketeer_corps:{
+        options:['Reinforced']
       }
     }
   },
@@ -170,6 +198,17 @@ export const factionData = [
     regiment_modifiers: {
       foot_regiment: {
         units_available: ['classic_sqd'],
+      },
+      horse_regiment: {
+        units_available: ['boyar'],
+      },
+      east_horse_regiment: {
+        instead_of: 'horse_regiment'
+      },
+      battle_group: {
+      },
+      haiduk_battle_group: {
+        instead_of: 'battle_group'
       }
     },
     unit_modifiers: {
@@ -191,6 +230,7 @@ export const factionData = [
     regiment_modifiers: {
       foot_regiment: {
         units_available: ['reformed'],
+        additional_units: ['musketeer_corps']
       }
     },
     unit_modifiers: {
@@ -202,7 +242,160 @@ export const factionData = [
       },
       modern_cav:{
         options:['Pistoliers']
+      },
+      musketeer_corps:{
+        options:['Reinforced']
       }
     }
   },
+
+  {
+    id: 'cossack',
+    title:'Cossacks',
+    sort: 9000,
+    flag:'assets/icons/flags/cossack.svg',
+    army_types:['riders_army'],
+    regiment_modifiers: {
+      eastern_battle_group: {
+        companies_available: ['plastun'],
+      },
+      east_horse_regiment: {
+        units_available: ['cossack','tartar'],
+      }
+    },
+    unit_modifiers: {
+      cossack: {
+        options: ['Zaporozhian Host', 'Don Host']
+      }
+    }
+  },
+
+  {
+    id: 'tartar',
+    title:'Tartars',
+    sort: 10000,
+    flag:'assets/icons/flags/tartar.svg',
+    army_types:['riders_army'],
+    regiment_modifiers: {
+      eastern_battle_group: {
+        companies_available: ['azapes'],
+      },
+      east_horse_regiment: {
+        units_available: ['cossack','tartar'],
+      }
+    },
+    unit_modifiers: {
+
+    }
+  },
+
+  {
+    id: 'croatia',
+    title:'Croatia',
+    sort: 8000,
+    flag:'assets/icons/flags/croatia.svg',
+    army_types:['balkan_army'],
+    regiment_modifiers: {
+
+    },
+    unit_modifiers: {
+      light_hussar: {
+        options: ['Fiercers', 'Elusives']
+      },
+      boyars: {
+        options: ['Hussar Boyars']
+      }
+    }
+  },
+
+  {
+    id: 'hungary',
+    title:'Kingdom of Hungary',
+    sort: 7000,
+    flag:'assets/icons/flags/hungary.svg',
+    army_types:['balkan_army'],
+    regiment_modifiers: {
+
+    },
+    unit_modifiers: {
+      light_hussar: {
+        options: ['Large Unit']
+      },
+      boyars: {
+        options: ['Large unit','Siculi','Hussar Boyars']
+      }
+    }
+  },
+
+  {
+    id: 'russia',
+    title:'Tsardom of Russia',
+    sort: 5000,
+    flag:'assets/icons/flags/russia.svg',
+    army_types:['russia_army'],
+    regiment_modifiers: {
+
+    },
+    unit_modifiers: {
+      boyars: {
+        options: ['Large unit','Inozemskii']
+      },
+      battalion: {
+        options: ['Large unit','Modernized','+Bardiches']
+      },
+      levies: {
+        options: ['Large unit','Gulyay-Gorod','Obedients','+Bardiches']
+      },
+      cossack: {
+        options: ['Don Host']
+      }
+    }
+  },
+
+  {
+    id: 'turkey',
+    title:'Ottoman Empire',
+    sort: 6000,
+    flag:'assets/icons/flags/turkey.svg',
+    army_types:['turkey_army'],
+    regiment_modifiers: {
+      armatoles_battle_group: {
+        instead_of: 'turkey_battle_group'
+      }
+    },
+    unit_modifiers: {
+
+    }
+  },
+
+  {
+    id: 'poland',
+    title: 'Polish-Lithuanian Commonwealth',
+    sort: 4000,
+    flag: 'assets/icons/flags/poland.svg',
+    army_types: ['poland_army'],
+    regiment_modifiers: {
+      haiduk_battle_group: {
+        instead_of: 'battle_group'
+      }
+    },
+    unit_modifiers: {
+      lisow: {
+        options: ['Organized']
+      },
+      haiduk: {
+        options: ['Well Equiped']
+      },
+      battalion: {
+        options: ['Large unit', 'Modernized', 'German Mercenaries']
+      },
+      levies: {
+        options: ['Pospolite Ruszenie', 'Large unit', 'Tabor', 'Obedients']
+      },
+      cossack: {
+        options: ['Zaporozhian Host']
+      }
+    }
+  }
+
 ];

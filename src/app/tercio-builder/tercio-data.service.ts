@@ -24,12 +24,22 @@ export class TercioDataService {
     return _.find(this.data.armyTypeData, (o: any)=>{return o.id === id})
   }
 
+  getArmyTypeForFaction(army_type_id: string, faction_id: string){
+    let army_type_data = this.getArmyTypeById(army_type_id),
+      faction_data: any = this.getFactionById(faction_id);
 
+    _.each(faction_data.regiment_modifiers, (mod: any, key: string)=>{
+      if (mod.instead_of) {
+        army_type_data.regiments.push({id:key, instead_of:mod.instead_of});
+      }
+    });
+    return army_type_data;
+  }
 
 
   getRegimentData(faction_id: string){
     function modifyRegiment (regiment: any, mod: any){
-      _.each(regiment, (value: any, key)=>{
+      _.each(regiment, (value: any, key: string)=>{
         if(mod[key]){
           if(_.isArray(value)){
             regiment[key] = _.concat(value,mod[key]);
@@ -47,7 +57,6 @@ export class TercioDataService {
       let regiment = _.find(regiment_data,(o: any)=>{return o.id===key});
       regiment = modifyRegiment(regiment, regiment_mod);
     });
-
     return regiment_data;
   }
   getRegimentById(id: string){

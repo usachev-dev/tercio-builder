@@ -190,7 +190,7 @@
     </div>
   </div>
 </div>
-<div class="rules-block" *ngIf="unit.weaponry.length>0 || unit.rules.length>0 || unit.options_chosen.length>0">
+<div class="rules-block" *ngIf="optionsBlockShow" [class.noprint]="optionsBlockPrint">
   <div class="weapons" *ngIf="unit.weaponry.length>0">
     <span translate>Weaponry: <span translate class="weapon" *ngFor="let weapon of unit.weaponry">{{weapon}}</span></span>
   </div>

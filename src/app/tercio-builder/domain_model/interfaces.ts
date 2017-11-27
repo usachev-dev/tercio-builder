@@ -20,10 +20,21 @@ export interface regimentData {
   units_available: string[];
   same_unit?: boolean;
   companies_limit?: string;
+  additional_units?: string[];
+  instead_of?: string;
+}
+
+export interface commanderCost {
+  0?: number,
+  1?: number,
+  2?: number,
+  3?: number,
+  4?: number,
+  5?: number,
 }
 
 export interface commanderData {
-  cost: any; // {0: 5, 1: 10, 2: 25, 3: 50, 4: 100}
+  cost: commanderCost;
   max_rank: number;
   min_rank: number;
   virtues?: string[];

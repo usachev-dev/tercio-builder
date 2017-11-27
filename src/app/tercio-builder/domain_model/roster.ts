@@ -17,6 +17,7 @@ export class Roster {
   faction: string;
   faction_title: string;
   armyTypeData: armyTypeData;
+  //armyTypeDataNew: armyTypeData;
   regimentData: regimentData[];
   cnc: Commander;
   regiments: Regiment[] = [];
@@ -30,7 +31,8 @@ export class Roster {
     this.data = data;
     this.faction = faction;
     this.faction_title = this.data.getFactionById(this.faction).title;
-    this.armyTypeData = data.getArmyTypeById(army_type);
+    //this.armyTypeData = data.getArmyTypeById(army_type);
+    this.armyTypeData = data.getArmyTypeForFaction(army_type, faction);
     this.regimentData = data.getRegimentData(this.faction);
     this.availableRegiments = this.getAvailableRegiments();
 
@@ -52,8 +54,8 @@ export class Roster {
   getRegimentNumber(regType?: string): number{
     if (regType){
       let result = 0;
-      _.each(this.regiments, (o)=>{
-        if (o.regiment_data.id === regType){
+      _.each(this.regiments, (o: any)=>{
+        if (o.regiment_data.id === regType || o.regiment_data.instead_of === regType){
           result++;
         }
       });
@@ -80,12 +82,34 @@ export class Roster {
   getAvailableRegiments(){
     let result: regimentData[] = [];
     _.each(this.regimentData, (regiment_type: any)=>{
-      let limit = _.find(this.armyTypeData.regiments,(o: any)=>{return o.id===regiment_type.id}).max;
-      if(this.getRegimentNumber(regiment_type.id)<limit){
-        result.push(regiment_type);
+      let found = _.find(this.armyTypeData.regiments,(o: any)=>{return o.id===regiment_type.id});
+      let instead: any;
+      let limit;
+      if(found){
+        if (found.instead_of){
+          instead = _.find(this.armyTypeData.regiments,(o: any)=>{return o.id===found.instead_of});
+          limit = instead.max;
+          if(this.getRegimentNumber(instead.id)<limit){
+            result.push(regiment_type);
+          }
+        } else {
+          limit=found.max;
+          if(this.getRegimentNumber(regiment_type.id)<limit){
+            result.push(regiment_type);
+          }
+        }
       }
     });
     return result;
+    // _.each(this.regimentData, (regiment_type: any)=>{
+    //   let found = _.find(this.armyTypeData.regiments,(o: any)=>{return o.id===regiment_type.id});
+    //   let limit;
+    //   found ? limit=found.max : limit=0;
+    //   if(this.getRegimentNumber(regiment_type.id)<limit){
+    //     result.push(regiment_type);
+    //   }
+    // });
+    // return result;
   }
 
   saveRoster(){

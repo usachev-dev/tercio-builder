@@ -24,6 +24,22 @@ export class UnitComponent implements OnInit {
 
   ngOnInit() {
   }
+  get optionsBlockShow(): boolean {
+    return (
+      this.unit.weaponry.length>0 ||
+      this.unit.rules.length>0 ||
+      this.unit.options_chosen.length>0 ||
+      this.unit.options_available.length>0
+    )
+  }
+
+  get optionsBlockPrint(): boolean {
+    return !(
+      this.unit.weaponry.length>0 ||
+      this.unit.rules.length>0 ||
+      this.unit.options_chosen.length>0
+    )
+  }
 
   deleteUnit(){
     if (this.unit.is_company){

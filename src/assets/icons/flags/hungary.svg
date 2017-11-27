@@ -5,12 +5,12 @@
 	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 359.3 497.5"
 	 style="enable-background:new 0 0 359.3 497.5;" xml:space="preserve">
 <style type="text/css">
-	.st0{fill:none;stroke:#000000;stroke-width:1.5;stroke-miterlimit:3.8637;}
+	.st0{fill:none;stroke:#CD2A3E;stroke-width:1.5;stroke-miterlimit:3.8637;}
 	.st1{clip-path:url(#SVGID_2_);fill:#FFFFFF;}
-	.st2{fill:#FFFFFF;stroke:#000000;stroke-width:1.5;stroke-miterlimit:3.8637;}
-	.st3{fill:#F4B900;}
-	.st4{fill:#004F9E;}
-	.st5{fill:#B1171A;}
+	.st2{fill:#FFFFFF;stroke:#CD2A3E;stroke-width:1.5;stroke-miterlimit:3.8637;}
+	.st3{fill:#436F4D;stroke:#CD2A3E;stroke-width:1.5;stroke-miterlimit:3.8637;}
+	.st4{fill:#CD2A3E;}
+	.st5{fill:#FFFFFF;}
 </style>
 <sodipodi:namedview  bordercolor="#666666" borderopacity="1" gridtolerance="10" guidetolerance="10" id="namedview141" inkscape:current-layer="Слой_1" inkscape:cx="167.76793" inkscape:cy="319.2473" inkscape:pageopacity="0" inkscape:pageshadow="2" inkscape:window-height="480" inkscape:window-maximized="0" inkscape:window-width="716" inkscape:window-x="0" inkscape:window-y="0" inkscape:zoom="0.472" objecttolerance="10" pagecolor="#ffffff" showgrid="false">
 	</sodipodi:namedview>
@@ -148,6 +148,14 @@
 	s7.5-0.3,9.6,4.5s4.5,15.3,4.5,15.3"/>
 <path id="path138" inkscape:connector-curvature="0" class="st0" d="M199.1,15.6c0,0-4.1-5.2-10-6.6c-5.9-1.3-9.4-0.8-9.4-0.8
 	s-3.5-0.5-9.4,0.8s-10,6.6-10,6.6"/>
-<path class="st4" d="M286.8,192.9h-219V95.7c0-15.3,12.5-27.9,27.9-27.9h163.3c15.3,0,27.9,12.5,27.9,27.9V192.9z"/>
-<rect x="67.8" y="192.8" class="st5" width="219" height="137"/>
+<path class="st4" d="M286.8,194h-219V96.8C67.8,81.5,80.3,69,95.7,69h163.3c15.3,0,27.9,12.5,27.9,27.9V194z"/>
+<rect x="67.8" y="193.9" class="st4" width="219" height="137"/>
+<path id="path3341" inkscape:connector-curvature="0" class="st5" d="M151.2,104.1c7.1,16.9,11.5,33.1,12.1,50.5
+	c-18.9,0-36.3-4.5-54.4-12.2c1.2,7.8,1.8,16.8,1.8,26.1c0,9.5-0.7,18.4-1.8,26.2c18.2-7.7,35.5-12.2,54.5-12.2v46.7h-19
+	c-18.9,0-36.4-4.5-54.6-12.2c1.2,7.8,1.8,16.8,1.8,26.1c0,9.5-0.7,18.4-1.8,26.2c18.2-7.7,35.6-12.2,54.6-12.2c6.3,0.1,12.7,0,19,0
+	c0,23.7,0,47.3,0,71c0,18.9-4.5,36.3-12.2,54.5c7.9-1.2,16.8-1.8,26.1-1.8c9.5,0,18.4,0.7,26.2,1.8c-7.6-18.2-12.2-35.5-12.2-54.5
+	v-71c6.4,0,12.7,0.1,19,0c18.9,0,36.4,4.5,54.5,12.2c-1.2-7.9-1.8-16.8-1.8-26.2c0-9.4,0.7-18.4,1.8-26.1
+	c-18.1,7.6-35.5,12.2-54.5,12.2h-19v-46.7c18.9,0,36.3,4.5,54.5,12.2c-1.2-7.9-1.8-16.8-1.8-26.2c0-9.4,0.7-18.4,1.8-26.1
+	c-18.1,7.6-35.5,12.2-54.4,12.2c0.6-17.4,4.9-33.6,12.1-50.5c-7.9,1.2-16.8,1.8-26.2,1.8C167.9,106,159,105.3,151.2,104.1
+	L151.2,104.1z"/>
 </svg>
