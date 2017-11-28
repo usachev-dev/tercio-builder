@@ -321,7 +321,8 @@ export const optionData = {
         stats:{
           melee: 4,
           courage: 4
-        }
+        },
+        not_with:['Highlanders', 'Tories']
       },
       'Mob':{
         cost: 15,
@@ -329,7 +330,7 @@ export const optionData = {
           stamina: 4
         },
         rules: ['Large'],
-        not_with:['Light','Tories']
+        not_with:['Light','Tories','Highlanders']
       },
       'Mercenaries':{
         cost:-5,
@@ -357,13 +358,13 @@ export const optionData = {
       'Highlanders':{
         cost: 5,
         rules: ['Frenzied'],
-        not_with:['Tories']
+        not_with:['Tories','Brave','Mob']
       },
       'Tories': {
         cot: 10,
         weaponry: ['Grenades'],
         rules: ['Skirmishers'],
-        not_with: ['Mob','Highlanders']
+        not_with: ['Mob','Highlanders','Brave']
       }
     }
   },
