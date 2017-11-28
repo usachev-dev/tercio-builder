@@ -4,7 +4,7 @@ const tercio_unit_modifiers = {
   light_art:{
     options:['Veteran Crew', 'Large Battery','Regimental Gun']
   },
-  medium_art:{
+  med_art:{
     options:['Veteran Crew', 'Large Battery']
   },
   heavy_art:{
@@ -394,7 +394,7 @@ export const factionData = [
       light_art:{
         options:['Large Battery']
       },
-      medium_art:{
+      med_art:{
         options:['Large Battery']
       },
       heavy_art:{
@@ -418,7 +418,7 @@ export const factionData = [
       light_art:{
         options:['Large Battery']
       },
-      medium_art:{
+      med_art:{
         options:['Large Battery']
       }
     }
@@ -461,7 +461,7 @@ export const factionData = [
       light_art:{
         options:['Veteran Crew', 'Large Battery']
       },
-      medium_art:{
+      med_art:{
         options:['Veteran Crew', 'Large Battery']
       },
       heavy_art:{
