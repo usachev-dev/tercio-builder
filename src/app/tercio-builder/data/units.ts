@@ -64,7 +64,7 @@ export const unitData = [
       speed: 4,
       melee: 3,
       shoot: [4, 4],
-      discipline: 5,
+      discipline: 4,
       courage: 4,
       stamina: 3,
       infantry: 4,

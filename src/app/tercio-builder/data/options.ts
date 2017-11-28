@@ -58,7 +58,7 @@ const shot_company = {
       not_with:['Archers, large','Archers','Musketeers','Flintlock']
     },
     'Brigade':{
-      cost: 0,
+      cost: 5,
       rules: ['Brigade'],
       not_with: ['Flintlock']
     },
