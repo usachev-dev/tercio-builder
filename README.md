@@ -62,7 +62,7 @@ Task                            | Description
 `npm run docs`                  | Display project documentation
 `npm run pwa`                   | Compile pwa with a service worker, ready to deploy
 `firebase serve`                | Serve app locally with firebase from 'dist' folder
-`firebase serve`                | deploy app to the producion server
+`firebase deploy`                | deploy app to the producion server
 
 When building the application, you can specify the target environment using the additional flag `--env <name>` (do not
 forget to prepend `--` to pass arguments to npm scripts).

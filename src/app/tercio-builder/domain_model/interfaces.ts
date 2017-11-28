@@ -64,7 +64,7 @@ export interface option {
 }
 
 export interface stats {
-  speed?: number;
+  speed?: string;
   melee?: number;
   shoot?: number[];
   discipline?: number;

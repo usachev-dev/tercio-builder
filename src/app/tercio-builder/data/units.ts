@@ -175,7 +175,7 @@ export const unitData = [
     title: 'Light Artillery',
     base_cost: 60,
     stats: {
-      speed: 6,
+      speed: 2,
       melee: 2,
       shoot: [1, 1],
       discipline: 3,
@@ -187,14 +187,14 @@ export const unitData = [
       artillery: 5
     },
     rules: ['Integral Command','Crew Defence', 'No Escape'],
-    weaponry: <string[]>[]
+    weaponry: ['Light Gun']
   },
   {
     id: 'med_art',
     title: 'Medium Artillery',
-    base_cost: 60,
+    base_cost: 70,
     stats: {
-      speed: 5,
+      speed: 0,
       melee: 2,
       shoot: [1, 1],
       discipline: 3,
@@ -206,14 +206,14 @@ export const unitData = [
       artillery: 5
     },
     rules: ['Integral Command','Crew Defence', 'No Escape'],
-    weaponry: <string[]>[]
+    weaponry: ['Medium Gun']
   },
   {
     id: 'heavy_art',
     title: 'Heavy Artillery',
-    base_cost: 60,
+    base_cost: 85,
     stats: {
-      speed: 4,
+      speed: 0,
       melee: 2,
       shoot: [1, 1],
       discipline: 3,
@@ -225,12 +225,12 @@ export const unitData = [
       artillery: 5
     },
     rules: ['Integral Command','Crew Defence', 'No Escape'],
-    weaponry: <string[]>[]
+    weaponry: ['Heavy Gun']
   },
   {
     id: 'shot_company',
     title: 'Shot Company',
-    base_cost: 55,
+    base_cost: 50,
     stats: {
       speed: 5,
       melee: 2,

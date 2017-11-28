@@ -1,3 +1,31 @@
+import * as _ from 'lodash';
+
+const tercio_unit_modifiers = {
+  light_art:{
+    options:['Veteran Crew', 'Large Battery','Regimental Gun']
+  },
+  medium_art:{
+    options:['Veteran Crew', 'Large Battery']
+  },
+  heavy_art:{
+    options:['Veteran Crew', 'Large Battery']
+  },
+  melee_company: {
+    options: ['Mob','Brave']
+  }
+};
+
+const england_unit_modifiers = _.extend(_.cloneDeep(tercio_unit_modifiers),{
+  melee_company: {
+    options:['Mob','Brave','Highlanders','Tories']
+  },
+  shot_company: {
+    options: ['Archers','Archers, large', 'Tories']
+  },
+});
+
+
+
 export const factionData = [
   {
     id: 'spain',
@@ -10,11 +38,11 @@ export const factionData = [
         units_available: ['tercio']
       }
     },
-    unit_modifiers: {
+    unit_modifiers: _.extend({
       tercio:{
         options:['Viejo','+Swordsmen']
       }
-    }
+    }, tercio_unit_modifiers)
   },
 
   {
@@ -28,17 +56,15 @@ export const factionData = [
         units_available: ['reformed']
       }
     },
-    unit_modifiers: {
-      shot_company: {
-        options: ['Archers','Archers, large']
-      },
+    unit_modifiers: _.extend({
       reformed: {
         options: ['+Greatswords']
       },
       musketeer_corps: {
         options: ['New Model Army']
-      }
-    }
+      },
+
+    }, england_unit_modifiers)
   },
 
   {
@@ -53,7 +79,7 @@ export const factionData = [
         additional_units: ['musketeer_corps']
       }
     },
-    unit_modifiers: {
+    unit_modifiers: _.extend({
       shot_company:{
         options:['Brigade']
       },
@@ -63,7 +89,7 @@ export const factionData = [
       musketeer_corps:{
         options:['Reinforced']
       }
-    }
+    }, tercio_unit_modifiers)
   },
 
   {
@@ -87,7 +113,7 @@ export const factionData = [
         instead_of:'horse_regiment'
       }
     },
-    unit_modifiers: {
+    unit_modifiers: _.extend({
       classic_sqd:{
         options:['Large Squadron', 'Modernised']
       },
@@ -100,7 +126,7 @@ export const factionData = [
       mtd_arquebus:{
         options:['Large Formation']
       }
-    }
+    }, tercio_unit_modifiers)
   },
 
   {
@@ -121,7 +147,7 @@ export const factionData = [
         instead_of: 'horse_regiment'
       }
     },
-    unit_modifiers: {
+    unit_modifiers: _.extend({
       classic_sqd:{
         options:['Large Squadron', 'Modernised']
       },
@@ -140,7 +166,7 @@ export const factionData = [
       modern_cav:{
         options:['Pistoliers']
       }
-    }
+    }, tercio_unit_modifiers)
   },
 
   {
@@ -154,14 +180,14 @@ export const factionData = [
         units_available: ['reformed'],
       }
     },
-    unit_modifiers: {
+    unit_modifiers: _.extend({
       reformed:{
         options:['Mercenaries']
       },
       modern_cav:{
         options:['Pistoliers']
       }
-    }
+    }, tercio_unit_modifiers)
   },
 
   {
@@ -176,7 +202,7 @@ export const factionData = [
         additional_units: ['musketeer_corps']
       }
     },
-    unit_modifiers: {
+    unit_modifiers: _.extend({
       cuirassiers:{
         options:['Heavy']
       },
@@ -186,7 +212,7 @@ export const factionData = [
       musketeer_corps:{
         options:['Reinforced']
       }
-    }
+    }, tercio_unit_modifiers)
   },
 
   {
@@ -212,14 +238,14 @@ export const factionData = [
         instead_of: 'battle_group'
       }
     },
-    unit_modifiers: {
+    unit_modifiers: _.extend({
       cuirassiers:{
         options:['Heavy']
       },
       shot_company:{
         options:['Crossbowmen']
       }
-    }
+    }, tercio_unit_modifiers)
   },
 
   {
@@ -234,7 +260,7 @@ export const factionData = [
         additional_units: ['musketeer_corps']
       }
     },
-    unit_modifiers: {
+    unit_modifiers: _.extend({
       cuirassiers:{
         options:['Heavy']
       },
@@ -247,7 +273,7 @@ export const factionData = [
       musketeer_corps:{
         options:['Reinforced']
       }
-    }
+    }, tercio_unit_modifiers)
   },
 
   {
@@ -305,6 +331,9 @@ export const factionData = [
       },
       boyars: {
         options: ['Hussar Boyars']
+      },
+      shot_company: {
+        options:['Crossbowmen']
       }
     }
   },
@@ -324,6 +353,9 @@ export const factionData = [
       },
       boyars: {
         options: ['Large unit','Siculi','Hussar Boyars']
+      },
+      shot_company: {
+        options:['Crossbowmen']
       }
     }
   },
@@ -352,6 +384,21 @@ export const factionData = [
       },
       cossack: {
         options: ['Don Host']
+      },
+      melee_company: {
+        options: ['+Bardiches']
+      },
+      shot_company: {
+        options:['Crossbowmen']
+      },
+      light_art:{
+        options:['Large Battery']
+      },
+      medium_art:{
+        options:['Large Battery']
+      },
+      heavy_art:{
+        options:['Large Battery']
       }
     }
   },
@@ -368,7 +415,12 @@ export const factionData = [
       }
     },
     unit_modifiers: {
-
+      light_art:{
+        options:['Large Battery']
+      },
+      medium_art:{
+        options:['Large Battery']
+      }
     }
   },
 
@@ -402,8 +454,19 @@ export const factionData = [
       },
       cossack: {
         options: ['Zaporozhian Host']
+      },
+      shot_company: {
+        options:['Crossbowmen']
+      },
+      light_art:{
+        options:['Veteran Crew', 'Large Battery']
+      },
+      medium_art:{
+        options:['Veteran Crew', 'Large Battery']
+      },
+      heavy_art:{
+        options:['Veteran Crew']
       }
     }
   }
-
 ];

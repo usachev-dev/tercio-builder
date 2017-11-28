@@ -1,5 +1,5 @@
 const shot_company = {
-  default_options: ['Veteran', 'Large Company', 'Mercenaries','Musketeers','Skirmishers'],
+  default_options: ['Veteran', 'Large Company', 'Mercenaries','Musketeers','Skirmishers','Flintlock'],
   options: {
     'Veteran':{
       cost:10,
@@ -24,7 +24,13 @@ const shot_company = {
       cost: 10,
       weaponry:['Musket'],
       weaponry_loss:['Arquebus'],
-      not_with:['Archers, large','Archers','Crossbowmen']
+      not_with:['Archers, large','Archers','Crossbowmen','Flintlock']
+    },
+    'Flintlock':{
+      cost: 20,
+      weaponry:['Flintlock'],
+      weaponry_loss:['Arquebus'],
+      not_with:['Archers, large','Archers','Crossbowmen','Musketeers','Brigade']
     },
     'Archers':{
       cost: 0,
@@ -33,7 +39,7 @@ const shot_company = {
       stats:{
         shoot: [2,2]
       },
-      not_with: ['Large Company','Archers, large','Musketeers']
+      not_with: ['Large Company','Archers, large','Musketeers','Flintlock','Crossbowmen']
     },
     'Archers, large':{
       cost: 0,
@@ -42,18 +48,19 @@ const shot_company = {
       stats:{
         shoot: [3,3]
       },
-      not_with: ['Archers','Musketeers'],
+      not_with: ['Archers','Musketeers','Flintlock','Crossbowmen'],
       with_option:['Large Company']
     },
     'Crossbowmen':{
-      cost: 5,
+      cost: +5,
       weaponry:['Crossbow'],
       weaponry_loss:['Arquebus'],
-      not_with:['Archers, large','Archers','Musketeers']
+      not_with:['Archers, large','Archers','Musketeers','Flintlock']
     },
     'Brigade':{
       cost: 0,
-      rules: ['Brigade']
+      rules: ['Brigade'],
+      not_with: ['Flintlock']
     },
     'Skirmishers':{
       cost: -10,
@@ -61,6 +68,11 @@ const shot_company = {
         courage:2
       },
       rules:['Skirmishers']
+    },
+    'Tories':{
+      cost: 5,
+      rules: ['Ambush'],
+      not_with: ['Archers, large']
     }
   }
 };
@@ -296,7 +308,7 @@ export const optionData = {
   },
 
   melee_company:{
-    default_options: ['Veteran', 'Brave', 'Mob', 'Mercenaries','Light','+Halberds','+Greatswords'],
+    default_options: ['Veteran', 'Mercenaries','Light','+Halberds','+Greatswords'],
     options: {
       'Veteran':{
         cost:10,
@@ -317,7 +329,7 @@ export const optionData = {
           stamina: 4
         },
         rules: ['Large'],
-        not_with:['Light']
+        not_with:['Light','Tories']
       },
       'Mercenaries':{
         cost:-5,
@@ -330,12 +342,28 @@ export const optionData = {
       '+Halberds':{
         cost:5,
         weaponry:['Halberds'],
-        not_with:['+Greatswords']
+        not_with:['+Greatswords','+Bardiches']
       },
       '+Greatswords':{
         cost:5,
         weaponry:['Halberds'],
-        not_with:['+Halberds']
+        not_with:['+Halberds','+Bardiches']
+      },
+      '+Bardiches':{
+        cost:5,
+        weaponry:['Bardiches'],
+        not_with:['+Halberds','+Greatswords']
+      },
+      'Highlanders':{
+        cost: 5,
+        rules: ['Frenzied'],
+        not_with:['Tories']
+      },
+      'Tories': {
+        cot: 10,
+        weaponry: ['Grenades'],
+        rules: ['Skirmishers'],
+        not_with: ['Mob','Highlanders']
       }
     }
   },
@@ -555,7 +583,7 @@ export const optionData = {
   },
 
   light_art:{
-    default_options: ['Veteran Crew','Large Battery','Regimental Gun','Leather Gun','Carthorses'],
+    default_options: ['Leather Gun','Carthorses'],
     options: {
       'Veteran Crew':{
         cost:5,
@@ -582,13 +610,16 @@ export const optionData = {
       },
       'Carthorses':{
         cost:5,
-        rules:'Carthorses'
+        rules:'Carthorses',
+        stats: {
+          speed: '2/6'
+        }
       }
     }
   },
 
   med_art:{
-    default_options: ['Veteran Crew','Large Battery','Mortar','Carthorses','Fortified'],
+    default_options: ['Mortar','Carthorses','Fortified'],
     options: {
       'Veteran Crew':{
         cost:5,
@@ -597,12 +628,11 @@ export const optionData = {
         }
       },
       'Large Battery':{
-        cost:35,
+        cost: 40,
         stats: {
           stamina: 2,
           shoot: [2,2]
-        },
-        not_with: ['Regimental Gun']
+        }
       },
       'Mortar':{
         cost:5,
@@ -610,7 +640,10 @@ export const optionData = {
       },
       'Carthorses':{
         cost:5,
-        rules:'Carthorses'
+        rules:'Carthorses',
+        stats: {
+          speed: '0/5'
+        }
       },
       'Fortified':{
         cost: 10,
@@ -620,7 +653,7 @@ export const optionData = {
   },
 
   heavy_art:{
-    default_options: ['Veteran Crew','Large Battery','Mortar','Carthorses','Fortified'],
+    default_options: ['Mortar','Carthorses','Fortified'],
     options: {
       'Veteran Crew':{
         cost:5,
@@ -629,7 +662,7 @@ export const optionData = {
         }
       },
       'Large Battery':{
-        cost:35,
+        cost: 40,
         stats: {
           stamina: 2,
           shoot: [2,2]
@@ -641,8 +674,11 @@ export const optionData = {
         rules:['Mortar'],
       },
       'Carthorses':{
-        cost:5,
-        rules:'Carthorses'
+        cost:10,
+        rules:'Carthorses',
+        stats: {
+          speed: '0/4'
+        }
       },
       'Fortified':{
         cost: 10,

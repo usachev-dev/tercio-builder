@@ -82,7 +82,7 @@ export const regimentData = [
     min_units: 1,
     max_units: 1,
     min_companies: 0,
-    max_companies: 1,
+    max_companies: 2,
     commander:{
     },
     units_available: ['light_art','med_art','heavy_art'],
