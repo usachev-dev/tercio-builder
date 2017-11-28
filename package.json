@@ -15,7 +15,8 @@
     "translations:extract": "ngx-translate-extract --input ./src --output ./src/translations/template.json --format=json --clean -sort --marker extract",
     "docs": "hads ./docs -o",
     "env": "ngx-scripts env2json npm_package_version",
-    "generate": "ng generate"
+    "generate": "ng generate",
+    "pwa":"npm run env -s && ng build --prod && sw-precache --root=dist --config=precache-config.js"
   },
   "dependencies": {
     "@angular/animations": "^4.2.6",
@@ -66,6 +67,7 @@
     "stylelint-config-recommended-scss": "~2.0.0",
     "stylelint-config-standard": "~17.0.0",
     "stylelint-scss": "~2.1.0",
+    "sw-precache-webpack-plugin": "^0.11.4",
     "ts-node": "^3.2.0",
     "tslint": "~5.7.0",
     "typescript": "~2.4.2"

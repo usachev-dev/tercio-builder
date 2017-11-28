@@ -8,13 +8,11 @@ $def-bg: #FAF4B6;
   display: block;
   border: $border-style;
   width: 100%;
-  margin-top: 0;
+  margin-top: 10px;
   @media #{$smplus}{
-    margin-top: 10px;
     display: table;
   }
   @media print {
-    margin-top: 10px;
     display: table;
   }
 }

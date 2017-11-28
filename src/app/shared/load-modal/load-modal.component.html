@@ -3,7 +3,7 @@
   *ngIf="open"
   (close_modal)="closeMe()"
 >
-  <h3>Load Roster</h3>
+  <h2>Load Roster</h2>
   <div class="saved-roster"
        *ngFor="let saved of saved; let index=index;"
        (click)="loadRoster(index)"
