@@ -28,6 +28,10 @@ src/                         project source code
 |  |- app.component.*        app root component (shell)
 |  |- app.module.ts          app root module definition
 |  |- app-routing.module.ts  app routes
+|  |- tercio-builder/         main functionality folder
+|  |  |-data/                 data files for various entities
+|  |  |-domain_model/         domain model of the roster, contains all operations on data
+|  |  |-tercio-data.service.ts service, that serves data from the app folder to the app                 
 |  +- ...                    additional modules and components
 |- assets/                   app assets (images, fonts, sounds...)
 |- environments/             values for various build environments
@@ -56,6 +60,9 @@ Task                            | Description
 `npm run lint`                  | Lint code
 `npm run translations:extract`  | Extract strings from code and templates to `src/app/translations/template.json`
 `npm run docs`                  | Display project documentation
+`npm run pwa`                   | Compile pwa with a service worker, ready to deploy
+`firebase serve`                | Serve app locally with firebase from 'dist' folder
+`firebase serve`                | deploy app to the producion server
 
 When building the application, you can specify the target environment using the additional flag `--env <name>` (do not
 forget to prepend `--` to pass arguments to npm scripts).
@@ -81,11 +88,6 @@ you can also use the command `ng generate` directly.
 Tasks are mostly based on the `angular-cli` tool. Use `ng help` to get more help or go check out the
 [Angular-CLI README](https://github.com/angular/angular-cli).
 
-# What's in the box
-
-The app template is based on [HTML5](http://whatwg.org/html), [TypeScript](http://www.typescriptlang.org) and
-[Sass](http://sass-lang.com). The translation files use the common [JSON](http://www.json.org) format.
-
 #### Tools
 
 Development, build and quality processes are based on [angular-cli](https://github.com/angular/angular-cli) and
@@ -101,6 +103,7 @@ Development, build and quality processes are based on [angular-cli](https://gith
 - Static code analysis: [TSLint](https://github.com/palantir/tslint), [Codelyzer](https://github.com/mgechev/codelyzer),
   [Stylelint](http://stylelint.io) and [HTMLHint](http://htmlhint.com/)
 - Local knowledgebase server using [Hads](https://github.com/sinedied/hads)
+- Firebase for deployment [firebase](https://firebase.google.com/)
 
 #### Libraries
 

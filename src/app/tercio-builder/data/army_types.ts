@@ -199,7 +199,7 @@ export const armyTypeData = [
   {
     id:'russia_army',
     title: 'Russian Army',
-    special: commander_note+' There cannot be more Artillery Batteries than Infantry Regiments',
+    special: commander_note+' There cannot be more Artillery Batteries than Infantry Regiments. Number of Cossack regiments may not exceed the sum of other Horse Regiments in the army.',
     commander:{
       cost:{
         2:0,

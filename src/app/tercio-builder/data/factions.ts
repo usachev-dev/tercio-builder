@@ -203,7 +203,8 @@ export const factionData = [
         units_available: ['boyar'],
       },
       east_horse_regiment: {
-        instead_of: 'horse_regiment'
+        instead_of: 'horse_regiment',
+        units_available: ['cossack','tartar'],
       },
       battle_group: {
       },
@@ -334,7 +335,10 @@ export const factionData = [
     flag:'assets/icons/flags/russia.svg',
     army_types:['russia_army'],
     regiment_modifiers: {
-
+      east_horse_regiment: {
+        instead_of: 'russian_horse_regiment',
+        units_available: ['cossack'],
+      },
     },
     unit_modifiers: {
       boyars: {
@@ -377,7 +381,11 @@ export const factionData = [
     regiment_modifiers: {
       haiduk_battle_group: {
         instead_of: 'battle_group'
-      }
+      },
+      east_horse_regiment: {
+        instead_of: 'poland_horse_regiment',
+        units_available: ['cossack'],
+      },
     },
     unit_modifiers: {
       lisow: {
