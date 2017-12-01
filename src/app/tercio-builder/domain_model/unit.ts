@@ -74,15 +74,11 @@ export class Unit {
     this.options_chosen.push(_.find(this.options_all, (o: any)=>{return o.id == option_id}));
     this.updateWithOptions();
     this.updateAvailableOptions();
-    //this.update_cost.emit();
-    //this.update_glossary.emit();
   }
   removeOption(option_id: string){
     _.remove(this.options_chosen, (o: any)=>{return o.id == option_id});
     this.updateWithOptions();
     this.updateAvailableOptions();
-    //this.update_cost.emit();
-    //this.update_glossary.emit();
   }
   updateWithOptions(){
     this.initValues();

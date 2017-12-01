@@ -831,7 +831,7 @@ export const optionData = {
     }
   },
   haiduk: {
-    default_options: ['Veterans','Poorly Equiped','Scarce unit','+Pistols','+Halberds'],
+    default_options: ['Veterans','Poorly Equiped','Scarce Unit','+Pistols','+Halberds'],
     options: {
       'Veterans': {
         cost: 10,

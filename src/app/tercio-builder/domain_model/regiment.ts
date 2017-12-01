@@ -10,6 +10,7 @@ export class Regiment {
   get cost(): number {
     let result;
     result = this.units.reduce((sum, value) => sum + value.cost, 0);
+    result += this.companies.reduce((sum, value) => sum + value.cost, 0);
     if (this.commander && this.commander.cost) {
       result += this.commander.cost;
     }
