@@ -884,7 +884,8 @@ export const optionData = {
         stats: {
           courage: 5
         },
-        weaponry:['Heavy Lances']
+        weaponry:['Heavy Lances'],
+        not_with: ['Pancerna', 'Petyhorcy', 'Lekka']
       },
       'Pancerna': {
         cost: 10,
@@ -892,14 +893,16 @@ export const optionData = {
           melee: 5
         },
         rules:['Heavy Cavalry'],
-        rules_loss:['Mobility']
+        rules_loss:['Mobility'],
+        not_with: ['Husarska', 'Petyhorcy', 'Lekka']
       },
       'Petyhorcy': {
         cost: 20,
         stats: {
           melee: 5
         },
-        weaponry:['Heavy Lances']
+        weaponry:['Heavy Lances'],
+        not_with: ['Husarska', 'Pancerna', 'Lekka']
       },
       'Lekka': {
         cost: 5,
@@ -908,7 +911,8 @@ export const optionData = {
           shoot: [2,2]
         },
         weaponry: ['Pistols'],
-        weaponry_loss: ['Lances']
+        weaponry_loss: ['Lances'],
+        not_with: ['Husarska', 'Pancerna', 'Petyhorcy']
       }
     }
   },
